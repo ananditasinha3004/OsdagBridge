@@ -1,0 +1,705 @@
+{
+  "source_commit": "d74f56dd7f22925fb8148cabf5740ed8d1e39ff3",
+  "workbook": "testing/task3/evidence/TC01_results.xlsx",
+  "checks_total": 59,
+  "pass": 50,
+  "fail": 9,
+  "checks": [
+    {
+      "check_id": "T3-DICT-R1-geometry.span",
+      "layer": "UI/Input/Output",
+      "field": "geometry.span",
+      "expected": "25",
+      "actual": {
+        "input": "25",
+        "output": 25
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-DICT-R1-geometry.skew_angle",
+      "layer": "UI/Input/Output",
+      "field": "geometry.skew_angle",
+      "expected": "0",
+      "actual": {
+        "input": "0",
+        "output": 0
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-DICT-R1-geometry.carriageway_width",
+      "layer": "UI/Input/Output",
+      "field": "geometry.carriageway_width",
+      "expected": "7.5",
+      "actual": {
+        "input": "7.5",
+        "output": 7.5
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-DICT-R1-material.girder",
+      "layer": "UI/Input/Output",
+      "field": "material.girder",
+      "expected": "custom_steel_360_510",
+      "actual": {
+        "input": "custom_steel_360_510",
+        "output": "custom_steel_360_510"
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-MAT-R1-material.girder.fy",
+      "layer": "Input/Output",
+      "field": "material.girder.fy",
+      "expected": "360",
+      "actual": 360,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-MAT-R1-material.girder.fu",
+      "layer": "Input/Output",
+      "field": "material.girder.fu",
+      "expected": "510",
+      "actual": 510,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-MAT-R1-material.girder.e",
+      "layer": "Input/Output",
+      "field": "material.girder.e",
+      "expected": "205",
+      "actual": 205,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-DICT-R2-geometry.span",
+      "layer": "UI/Input/Output",
+      "field": "geometry.span",
+      "expected": "30",
+      "actual": {
+        "input": "30",
+        "output": 30
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-DICT-R2-geometry.skew_angle",
+      "layer": "UI/Input/Output",
+      "field": "geometry.skew_angle",
+      "expected": "5",
+      "actual": {
+        "input": "5",
+        "output": 5
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-DICT-R2-geometry.carriageway_width",
+      "layer": "UI/Input/Output",
+      "field": "geometry.carriageway_width",
+      "expected": "7.5",
+      "actual": {
+        "input": "7.5",
+        "output": 7.5
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-DICT-R2-material.girder",
+      "layer": "UI/Input/Output",
+      "field": "material.girder",
+      "expected": "custom_steel_360_510",
+      "actual": {
+        "input": "custom_steel_360_510",
+        "output": "custom_steel_360_510"
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-MAT-R2-material.girder.fy",
+      "layer": "Input/Output",
+      "field": "material.girder.fy",
+      "expected": "360",
+      "actual": 360,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-MAT-R2-material.girder.fu",
+      "layer": "Input/Output",
+      "field": "material.girder.fu",
+      "expected": "510",
+      "actual": 510,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-MAT-R2-material.girder.e",
+      "layer": "Input/Output",
+      "field": "material.girder.e",
+      "expected": "205",
+      "actual": 205,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-DICT-R3-geometry.span",
+      "layer": "UI/Input/Output",
+      "field": "geometry.span",
+      "expected": "35",
+      "actual": {
+        "input": "35",
+        "output": 35
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-DICT-R3-geometry.skew_angle",
+      "layer": "UI/Input/Output",
+      "field": "geometry.skew_angle",
+      "expected": "-5",
+      "actual": {
+        "input": "-5",
+        "output": -5
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-DICT-R3-geometry.carriageway_width",
+      "layer": "UI/Input/Output",
+      "field": "geometry.carriageway_width",
+      "expected": "7.5",
+      "actual": {
+        "input": "7.5",
+        "output": 7.5
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-DICT-R3-material.girder",
+      "layer": "UI/Input/Output",
+      "field": "material.girder",
+      "expected": "custom_steel_360_510",
+      "actual": {
+        "input": "custom_steel_360_510",
+        "output": "custom_steel_360_510"
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-MAT-R3-material.girder.fy",
+      "layer": "Input/Output",
+      "field": "material.girder.fy",
+      "expected": "360",
+      "actual": 360,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-MAT-R3-material.girder.fu",
+      "layer": "Input/Output",
+      "field": "material.girder.fu",
+      "expected": "510",
+      "actual": 510,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-MAT-R3-material.girder.e",
+      "layer": "Input/Output",
+      "field": "material.girder.e",
+      "expected": "205",
+      "actual": 205,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-BRIDGE-overall_width_m",
+      "layer": "Input/Workbook",
+      "field": "overall_width_m",
+      "expected": 8.4,
+      "actual": 8.4,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-BRIDGE-span_m",
+      "layer": "Input/Workbook",
+      "field": "span_m",
+      "expected": "25",
+      "actual": 25,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-BRIDGE-structural_girders",
+      "layer": "Input/Workbook",
+      "field": "structural_girders",
+      "expected": 4,
+      "actual": 4,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-BRIDGE-girder_spacing_m",
+      "layer": "Input/Workbook",
+      "field": "girder_spacing_m",
+      "expected": 2.1,
+      "actual": 2.1,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-BRIDGE-deck_overhang_m",
+      "layer": "Input/Workbook",
+      "field": "deck_overhang_m",
+      "expected": 1.05,
+      "actual": 1.05,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-BRIDGE-skew_deg",
+      "layer": "Input/Workbook",
+      "field": "skew_deg",
+      "expected": "0",
+      "actual": 0,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-STEEL-girder",
+      "layer": "Output/Workbook",
+      "field": "Girder",
+      "expected": [
+        "E 350A",
+        490.0,
+        350.0,
+        200000.0
+      ],
+      "actual": [
+        "E 350A",
+        490,
+        350,
+        200000
+      ],
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-STEEL-cross_bracing",
+      "layer": "Output/Workbook",
+      "field": "Cross Bracing",
+      "expected": [
+        "E 350A",
+        490.0,
+        350.0,
+        200000.0
+      ],
+      "actual": [
+        "E 350A",
+        490,
+        350,
+        200000
+      ],
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-STEEL-end_diaphragm",
+      "layer": "Output/Workbook",
+      "field": "End Diaphragm",
+      "expected": [
+        "E 350A",
+        490.0,
+        350.0,
+        200000.0
+      ],
+      "actual": [
+        "E 350A",
+        490,
+        350,
+        200000
+      ],
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-DECK-ECM",
+      "layer": "Output/Workbook",
+      "field": "Deck Ecm labelled MPa",
+      "expected": 33.0,
+      "actual": 33,
+      "status": "FAIL",
+      "note": "Workbook exports the GPa magnitude 33 under an MPa header; expected 33000 MPa."
+    },
+    {
+      "check_id": "T3-XLS-DECK-MODULAR",
+      "layer": "Output/Workbook",
+      "field": "Deck modular ratio Es/Ecm",
+      "expected": 6.06,
+      "actual": 6060.61,
+      "status": "FAIL",
+      "note": "Reported 6060.61 results from dividing 200000 MPa by 33 GPa without conversion."
+    },
+    {
+      "check_id": "T3-XLS-GIRDER-UNITS-G1",
+      "layer": "Output/Workbook",
+      "field": "G1M1 dimensions labelled mm",
+      "expected": [
+        1390.0,
+        420.0,
+        18.0,
+        420.0,
+        18.0,
+        8.0
+      ],
+      "actual": [
+        1.39,
+        0.42,
+        0.02,
+        0.42,
+        0.02,
+        0.01
+      ],
+      "status": "FAIL",
+      "note": "Workbook consumes metre-normalized per-girder values after Design without converting them back to mm."
+    },
+    {
+      "check_id": "T3-XLS-GIRDER-UNITS-G2",
+      "layer": "Output/Workbook",
+      "field": "G2M1 dimensions labelled mm",
+      "expected": [
+        1390.0,
+        420.0,
+        18.0,
+        420.0,
+        18.0,
+        8.0
+      ],
+      "actual": [
+        1.39,
+        0.42,
+        0.02,
+        0.42,
+        0.02,
+        0.01
+      ],
+      "status": "FAIL",
+      "note": "Workbook consumes metre-normalized per-girder values after Design without converting them back to mm."
+    },
+    {
+      "check_id": "T3-XLS-GIRDER-UNITS-G3",
+      "layer": "Output/Workbook",
+      "field": "G3M1 dimensions labelled mm",
+      "expected": [
+        1390.0,
+        420.0,
+        18.0,
+        420.0,
+        18.0,
+        8.0
+      ],
+      "actual": [
+        1.39,
+        0.42,
+        0.02,
+        0.42,
+        0.02,
+        0.01
+      ],
+      "status": "FAIL",
+      "note": "Workbook consumes metre-normalized per-girder values after Design without converting them back to mm."
+    },
+    {
+      "check_id": "T3-XLS-GIRDER-UNITS-G4",
+      "layer": "Output/Workbook",
+      "field": "G4M1 dimensions labelled mm",
+      "expected": [
+        1390.0,
+        420.0,
+        18.0,
+        420.0,
+        18.0,
+        8.0
+      ],
+      "actual": [
+        1.39,
+        0.42,
+        0.02,
+        0.42,
+        0.02,
+        0.01
+      ],
+      "status": "FAIL",
+      "note": "Workbook consumes metre-normalized per-girder values after Design without converting them back to mm."
+    },
+    {
+      "check_id": "T3-XLS-DECK-BASIC",
+      "layer": "Output/Workbook",
+      "field": "Deck grade/thickness/overhang",
+      "expected": [
+        "M40",
+        "250.0",
+        1.05
+      ],
+      "actual": [
+        "M40",
+        "250",
+        1.05
+      ],
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-COMP-girders",
+      "layer": "Output dictionary",
+      "field": "girders",
+      "expected": 4,
+      "actual": 6,
+      "status": "PASS",
+      "note": "per-girder design records"
+    },
+    {
+      "check_id": "T3-COMP-stiffeners",
+      "layer": "Output dictionary",
+      "field": "stiffeners",
+      "expected": 4,
+      "actual": 6,
+      "status": "PASS",
+      "note": "intermediate/bearing stiffener checks"
+    },
+    {
+      "check_id": "T3-COMP-cross_bracing",
+      "layer": "Output dictionary",
+      "field": "cross_bracing",
+      "expected": 3,
+      "actual": 3,
+      "status": "PASS",
+      "note": "adjacent girder-pair result groups"
+    },
+    {
+      "check_id": "T3-COMP-end_diaphragm",
+      "layer": "Output dictionary",
+      "field": "end_diaphragm",
+      "expected": 3,
+      "actual": 0,
+      "status": "FAIL",
+      "note": "non-empty adjacent-pair design results"
+    },
+    {
+      "check_id": "T3-COMP-shear_connectors",
+      "layer": "Output dictionary",
+      "field": "shear_connectors",
+      "expected": 4,
+      "actual": 6,
+      "status": "PASS",
+      "note": "per-girder stud checks"
+    },
+    {
+      "check_id": "T3-COMP-deck",
+      "layer": "Output dictionary",
+      "field": "deck",
+      "expected": 55,
+      "actual": 55,
+      "status": "PASS",
+      "note": "deck design keys"
+    },
+    {
+      "check_id": "T3-COMP-deck_report",
+      "layer": "Output dictionary",
+      "field": "deck_report",
+      "expected": 56,
+      "actual": 56,
+      "status": "PASS",
+      "note": "deck report keys"
+    },
+    {
+      "check_id": "T3-GIRDER-COUNT",
+      "layer": "Input/CAD/Output",
+      "field": "structural girder count",
+      "expected": 4,
+      "actual": 6,
+      "status": "FAIL",
+      "note": "CAD and workbook show four structural girders; design_results reports six deck longitudinal lines as girders."
+    },
+    {
+      "check_id": "T3-XLS-COVER-girder",
+      "layer": "Workbook",
+      "field": "girder",
+      "expected": [
+        "Flexural Resistance Check",
+        "Girder Section Properties",
+        "Shear Resistance Check"
+      ],
+      "actual": "all present",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-COVER-cross_bracing",
+      "layer": "Workbook",
+      "field": "cross_bracing",
+      "expected": [
+        "Cross Bracing Section Propertie"
+      ],
+      "actual": "all present",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-COVER-end_diaphragm",
+      "layer": "Workbook",
+      "field": "end_diaphragm",
+      "expected": [
+        "End Diaphragm Section Propertie"
+      ],
+      "actual": "all present",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-COVER-shear_connectors",
+      "layer": "Workbook",
+      "field": "shear_connectors",
+      "expected": [
+        "Shear Connector Capacity",
+        "Shear Connector Details"
+      ],
+      "actual": "all present",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-COVER-deck",
+      "layer": "Workbook",
+      "field": "deck",
+      "expected": [
+        "Crack Width Check",
+        "Deck Slab Properties"
+      ],
+      "actual": "all present",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-XLS-TRANSVERSE-DESIGN",
+      "layer": "Workbook",
+      "field": "cross-bracing/end-diaphragm design checks",
+      "expected": "member capacities/utilization/status",
+      "actual": [
+        "Cross Bracing Section Propertie",
+        "End Diaphragm Section Propertie"
+      ],
+      "status": "FAIL",
+      "note": "Only section-property sheets are exported; no transverse-member design-check sheets are present."
+    },
+    {
+      "check_id": "T3-GRAPH-R1-cad",
+      "layer": "Graphical output",
+      "field": "cad",
+      "expected": "non-empty PNG",
+      "actual": {
+        "bytes": 22519,
+        "sha256": "4b9df5855a212a080735e8d5070e3cfe13eb2d5aa922f950c6eabe948ef76c1d"
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-GRAPH-R1-plot",
+      "layer": "Graphical output",
+      "field": "plot",
+      "expected": "non-empty PNG",
+      "actual": {
+        "bytes": 13511,
+        "sha256": "159520b9023b6bbe49984b45eb8d9bc8011e9d5c457367b447b9a092cd324114"
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-GRAPH-R2-cad",
+      "layer": "Graphical output",
+      "field": "cad",
+      "expected": "non-empty PNG",
+      "actual": {
+        "bytes": 22252,
+        "sha256": "34655031d7336b593f5782e3d48ad32ca16e20dbc7fc1d607e53af31b02b35ad"
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-GRAPH-R2-plot",
+      "layer": "Graphical output",
+      "field": "plot",
+      "expected": "non-empty PNG",
+      "actual": {
+        "bytes": 14935,
+        "sha256": "83bf0914997d5246efb0a13ea29a229c94e13a2ecbd0dcd3b3b5699017b6992c"
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-GRAPH-R3-cad",
+      "layer": "Graphical output",
+      "field": "cad",
+      "expected": "non-empty PNG",
+      "actual": {
+        "bytes": 22148,
+        "sha256": "1cfbe72d101cec997e8dcaee8468b5e04c3fe2885746619c4542c3129d82a90d"
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-GRAPH-R3-plot",
+      "layer": "Graphical output",
+      "field": "plot",
+      "expected": "non-empty PNG",
+      "actual": {
+        "bytes": 15938,
+        "sha256": "533c7efc5ca6110d3ffcbb1b9968cebf5f6c42e9c18b0f377c6c32786955877c"
+      },
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-GRAPH-DISTINCT-cad",
+      "layer": "Graphical output",
+      "field": "distinct cad across runs",
+      "expected": 3,
+      "actual": 3,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check_id": "T3-GRAPH-DISTINCT-plot",
+      "layer": "Graphical output",
+      "field": "distinct plot across runs",
+      "expected": 3,
+      "actual": 3,
+      "status": "PASS",
+      "note": ""
+    }
+  ]
+}

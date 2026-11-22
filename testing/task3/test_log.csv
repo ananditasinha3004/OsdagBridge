@@ -1,0 +1,14 @@
+test_id,scenario,expected,actual,status,evidence,issue
+T3-RUN-01,"25 m / 0 deg / custom girder steel","Design completes; inputs/dictionaries/CAD/plot match","Completed; all compared values match; distinct CAD/plot","PASS with known defects",evidence/output_verification.json,https://github.com/Nidhikhare12/OsdagBridge/issues/113
+T3-RUN-02,"Unlock then 30 m / +5 deg","Prior state clears and outputs regenerate","Backend output and plot cleared; design completed","PASS with known defects",evidence/output_verification.json,https://github.com/Nidhikhare12/OsdagBridge/issues/113
+T3-RUN-03,"Unlock then 35 m / -5 deg","Prior state clears and outputs regenerate","Backend output and plot cleared; design completed","PASS with known defects",evidence/output_verification.json,https://github.com/Nidhikhare12/OsdagBridge/issues/113
+T3-DICT-01,"UI vs Input/Output dictionaries","All selected values agree","21 of 21 comparisons pass","PASS",evidence/output_verification.csv,
+T3-XLS-01,"Bridge configuration and material workbook sheets","Match same-run dictionaries","Geometry and steel match","PASS",evidence/TC01_results.xlsx,
+T3-XLS-02,"Concrete Ecm and modular ratio","33000 MPa and 6.06","33 under MPa and 6060.61","FAIL",evidence/TC01_results.xlsx,https://github.com/Nidhikhare12/OsdagBridge/issues/171
+T3-XLS-03,"Girder geometry workbook units","1390/420/18/420/18/8 mm","1.39/0.42/0.02/0.42/0.02/0.01","FAIL",evidence/TC01_results.xlsx,notes/github_issue_drafts.md
+T3-COMP-01,"All steel components and deck","Non-empty auditable design outputs","Girders/stiffeners/bracing/studs/deck populated; diaphragm pairs empty","FAIL",evidence/output_verification.json,notes/github_issue_drafts.md
+T3-COMP-02,"Transverse design export coverage","Demand/capacity/UR/status sheets","Only section-property sheets","FAIL",evidence/TC01_results.xlsx,notes/github_issue_drafts.md
+T3-GRAPH-01,"3D CAD visual generation","Complete distinct models","All complete, readable, distinct","PASS",evidence/output_verification.json,
+T3-GRAPH-02,"Structural plot generation","Non-empty distinct plots","All non-empty and distinct","PASS",evidence/output_verification.json,
+T3-COUNT-01,"Structural girder count","4 input/CAD/workbook = 4 design girders","design_results reports 6","FAIL",evidence/output_verification.json,https://github.com/Nidhikhare12/OsdagBridge/issues/113
+T3-REPORT-01,"Native design report generation","Portable PDF and TeX","TeX assembled; PDF failed without pdflatex; TeX has dead temp asset paths","FAIL",evidence/native_design_report/OsdagBridge_Native_Design_Report_T3.tex,https://github.com/Nidhikhare12/OsdagBridge/issues/172
