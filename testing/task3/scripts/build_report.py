@@ -15,7 +15,7 @@ from reportlab.platypus import Image, PageBreak, Paragraph, SimpleDocTemplate, S
 
 
 ROOT = Path(__file__).resolve().parents[3]
-T2 = ROOT / "testing/task2/evidence/session_02"
+T2 = ROOT / "testing/task3/evidence/session_video_redo"
 T3 = ROOT / "testing/task3"
 OUT = T3 / "reports/Task3_Comprehensive_Output_Verification_Report.pdf"
 AUDIT = json.loads((T3 / "evidence/output_verification.json").read_text(encoding="utf-8"))
@@ -52,7 +52,18 @@ def t(rows, widths, font=7.6):
     bs = ParagraphStyle("td", fontName="Helvetica", fontSize=font, leading=font+2, textColor=DARK)
     cooked = []
     for ri, row in enumerate(rows):
-        cooked.append([cell if isinstance(cell, Paragraph) else Paragraph(escape(str(cell)), hs if ri == 0 else bs) for cell in row])
+        cooked_row = []
+        for cell in row:
+            if isinstance(cell, Paragraph):
+                cooked_row.append(cell)
+                continue
+            value = str(cell)
+            if ri > 0 and value.startswith(("https://", "http://")):
+                safe = escape(value)
+                cooked_row.append(Paragraph(f'<link href="{safe}" color="#175CD3">{safe}</link>', bs))
+            else:
+                cooked_row.append(Paragraph(escape(value), hs if ri == 0 else bs))
+        cooked.append(cooked_row)
     tab = Table(cooked, colWidths=widths, repeatRows=1, hAlign="LEFT")
     cmds = [("GRID",(0,0),(-1,-1),.35,colors.HexColor("#B8C2C7")),("VALIGN",(0,0),(-1,-1),"TOP"),("BACKGROUND",(0,0),(-1,0),DARK),("LEFTPADDING",(0,0),(-1,-1),4),("RIGHTPADDING",(0,0),(-1,-1),4),("TOPPADDING",(0,0),(-1,-1),4),("BOTTOMPADDING",(0,0),(-1,-1),4)]
     for ri in range(2, len(rows), 2):
@@ -87,7 +98,7 @@ def header_footer(canvas, doc):
         canvas.setFillColor(colors.white); canvas.setFont("Helvetica-Bold",11)
         canvas.drawString(35*mm,PAGE_H-114*mm,"59 automated checks: 50 pass, 9 confirmed failures")
         canvas.setFont("Helvetica",10)
-        canvas.drawString(35*mm,PAGE_H-126*mm,"All steel systems and the concrete deck audited; three-run stability evidence reused")
+        canvas.drawString(35*mm,PAGE_H-126*mm,"All steel systems and the concrete deck audited; fresh Task 3 three-run evidence included")
         canvas.drawString(35*mm,30*mm,"Prepared 23 November 2026 | dev @ d74f56d | macOS | Python 3.12.16")
     else:
         canvas.setFillColor(DARK); canvas.rect(0,PAGE_H-13*mm,PAGE_W,13*mm,fill=1,stroke=0)
@@ -178,17 +189,17 @@ story += [PageBreak(),p("10. Defects, Live Issues and Fix Map","title"),t([
     ["Concrete Ecm and modular ratio export","https://github.com/Nidhikhare12/OsdagBridge/issues/171","generate_results_values_builder.py - GPa to MPa before display and division"],
     ["Deck calculation Ecm boundary","https://github.com/Nidhikhare12/OsdagBridge/issues/148","plategirderbridge.py::design_deck_slab - pass Ecm*1000 to MPa API"],
     ["Empty end-diaphragm output after state change","https://github.com/Nidhikhare12/OsdagBridge/issues/199","Related trigger; fresh-run evidence broadens scope"],
-    ["Girder geometry export units","Issue draft included; GitHub integration lacked write permission","generate_results_values_builder.py::_dim - canonical *_mm values / explicit conversion"],
-    ["Missing transverse design exports","Issue draft included; GitHub integration lacked write permission","Add result resolvers and report helpers for bracing and diaphragms"],
+    ["Girder geometry export units","https://github.com/ananditasinha3004/OsdagBridge/issues/1","generate_results_values_builder.py::_dim - canonical *_mm values / explicit conversion"],
+    ["Missing transverse design exports","https://github.com/ananditasinha3004/OsdagBridge/issues/2","Add result resolvers and report helpers for bracing and diaphragms"],
     ["Native LaTeX compilation defects","https://github.com/Nidhikhare12/OsdagBridge/issues/172","Report environment and longtable syntax; also preserve report assets outside tempdir"],
-], [62*mm,76*mm,123*mm],7.25),p("The two new issue bodies are complete in testing/task3/notes/github_issue_drafts.md. Attempts to create them upstream and on the fork returned 403 because the connected GitHub App is read-only for issue creation.","small")]
+], [62*mm,76*mm,123*mm],7.25),p("The two new issue bodies and live links are preserved in testing/task3/notes/github_issue_drafts.md. Repository issue links: #1 and #2 on ananditasinha3004/OsdagBridge.","small")]
 
 story += [PageBreak(),p("11. Native Design Report Generation","title"),t([
     ["Step","Observed"],["Build payload","Succeeded from matching Input/Output dictionaries"],["Assemble report","Succeeded; 2,207-line TeX written"],["Compile PDF","Failed: pdflatex executable not found in osdagbridge-env"],["Portable TeX","Failed: copied TeX references deleted TemporaryDirectory image paths and assets"],["Test report","Succeeded independently with ReportLab and visual PDF QA"]
 ], [64*mm,197*mm],8.2),p("Suggested report fix","h2"),p("Bundle a compiler or make its location explicit; copy report images/assets next to the delivered TeX and rewrite paths before deleting the temporary directory; fail the UI with actionable diagnostics when no compiler is found. Existing #172 covers a separate LaTeX syntax blocker once a compiler is available."),p("Classification","h2"),p("This is a failed test case with an environment/configuration boundary plus a source-portability defect. It does not invalidate the XLSX comparisons or the independently compiled Task 3 testing report.","fail")]
 
 story += [PageBreak(),p("12. Submission Package","title"),t([
-    ["Deliverable","Path / status"],["Repository","https://github.com/ananditasinha3004/OsdagBridge/tree/codex/task3-comprehensive-output-verification"],["PDF report","testing/task3/reports/Task3_Comprehensive_Output_Verification_Report.pdf"],["ZIP","testing/task3/dist/OsdagBridge_Task3_Submission.zip"],["Audit logs","testing/task3/evidence/output_verification.json and .csv"],["Scripts","audit_outputs.py, generate_application_report.py, build_report.py"],["Test cases","Task 2 OSI files and Task 1 baseline workbook/dictionaries included"],["Resume","testing/task3/resume/Anandita_Sinha_Resume_v2.pdf"],["Video","testing/task3/video/Task3_Testing_Demonstration.mp4 (same authentic 3-run workflow recording)"],["Collaborator","Nidhikhare12 invitation blocked: browser not signed in; connector lacks repository administration"]
+    ["Deliverable","Path / status"],["Repository","https://github.com/ananditasinha3004/OsdagBridge/tree/codex/task3-comprehensive-output-verification"],["PDF report","testing/task3/reports/Task3_Comprehensive_Output_Verification_Report.pdf"],["ZIP","testing/task3/dist/OsdagBridge_Task3_Submission.zip"],["Audit logs","testing/task3/evidence/output_verification.json and .csv"],["Scripts","audit_outputs.py, generate_application_report.py, build_report.py"],["Test cases","Task 3 three-run OSI files, workbook, dictionaries, CAD and plot evidence included"],["Resume","testing/task3/resume/Anandita_Sinha_Resume_v2.pdf"],["Video","testing/task3/video/Task3_Testing_Demonstration.mp4 (new Task 3-only 3-run recording)"],["Collaborator","Nidhikhare12 invitation sent by repository owner; acceptance pending"]
 ], [58*mm,203*mm],8.1),p("Conclusion","h2"),p("The executed UI workflow is stable and produces distinct CAD/plots, but the engineering output chain is not fully self-consistent. The four-vs-six girder defect, concrete unit errors, girder workbook unit mismatch, empty end-diaphragm results, missing transverse check exports, and native report failure must be resolved before treating all generated deliverables as authoritative.","call")]
 
 OUT.parent.mkdir(parents=True, exist_ok=True)

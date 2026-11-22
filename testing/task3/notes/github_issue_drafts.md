@@ -1,6 +1,11 @@
-# Task 3 GitHub issue drafts
+# Task 3 GitHub issues
 
-The GitHub connector could read issues but returned `403 Resource not accessible by integration` for issue creation on both the upstream repository and the fork. These drafts are ready to paste upstream.
+The repository Issues feature was enabled and both detailed Task 3 reports were published:
+
+- https://github.com/ananditasinha3004/OsdagBridge/issues/1
+- https://github.com/ananditasinha3004/OsdagBridge/issues/2
+
+The submitted issue bodies are preserved below for the submission archive.
 
 ## Girder Section Properties workbook labels metre-normalized values as mm
 
