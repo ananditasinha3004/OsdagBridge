@@ -31,6 +31,8 @@ DEMO_READY_FILE = os.environ.get("OSDAGBRIDGE_DEMO_READY_FILE")
 DEMO_GO_FILE = os.environ.get("OSDAGBRIDGE_DEMO_GO_FILE")
 DEMO_DONE_FILE = os.environ.get("OSDAGBRIDGE_DEMO_DONE_FILE")
 DEMO_STOP_FILE = os.environ.get("OSDAGBRIDGE_DEMO_STOP_FILE")
+TASK_LABEL = os.environ.get("OSDAGBRIDGE_TASK_LABEL", "Task 02")
+SESSION_ID = os.environ.get("OSDAGBRIDGE_SESSION_ID", "TASK2-MULTIRUN-01")
 UI_KEYS = [
     "geometry.span",
     "geometry.skew_angle",
@@ -58,7 +60,7 @@ def main() -> int:
     dest.mkdir(parents=True, exist_ok=True)
 
     meta = {
-        "session_id": "TASK2-MULTIRUN-01",
+        "session_id": SESSION_ID,
         "started_at": datetime.now(ZoneInfo("Asia/Kolkata")).isoformat(),
         "pid": os.getpid(),
         "method": (
@@ -180,7 +182,7 @@ def main() -> int:
             baseline = yaml.safe_load((task1 / "osi/TC01_baseline.osi").read_text())
             window.input_dock.populate_from_dict(baseline)
             pump(0.5)
-            window.setWindowTitle("OsdagBridge Task 02 — ready to record")
+            window.setWindowTitle(f"OsdagBridge {TASK_LABEL} — ready to record")
             signal_and_wait(DEMO_READY_FILE, DEMO_GO_FILE)
 
             def material_dialog(dialog):
@@ -205,7 +207,7 @@ def main() -> int:
 
             for index, spec in enumerate(RUNS, start=1):
                 window.setWindowTitle(
-                    f"OsdagBridge Task 02 — Run {index}/3 — span {spec['span']} m, "
+                    f"OsdagBridge {TASK_LABEL} — Run {index}/3 — span {spec['span']} m, "
                     f"skew {spec['skew']}°"
                 )
                 run_dir = dest / f"run_{index}"
@@ -251,14 +253,14 @@ def main() -> int:
                 dump(run_dir / "input_after_save.json", window.input_dict)
 
                 window.input_dock.design_btn.click()
-                window.setWindowTitle(f"OsdagBridge Task 02 — Run {index}/3 — designing…")
+                window.setWindowTitle(f"OsdagBridge {TASK_LABEL} — Run {index}/3 — designing…")
                 deadline = time.monotonic() + 300
                 while getattr(window, "_design_running", False) and time.monotonic() < deadline:
                     pump(0.1)
                 assert not getattr(window, "_design_running", False), "Design timeout"
                 assert window.input_dock.is_locked, "Design workflow did not complete and lock inputs"
                 window.setWindowTitle(
-                    f"OsdagBridge Task 02 — Run {index}/3 complete — 3D CAD and plots updated"
+                    f"OsdagBridge {TASK_LABEL} — Run {index}/3 complete — 3D CAD and plots updated"
                 )
 
                 run["finished_at"] = datetime.now(ZoneInfo("Asia/Kolkata")).isoformat()
@@ -286,13 +288,13 @@ def main() -> int:
                 if DEMO_PAUSE > 0:
                     window.plots_view_toggle()
                     window.setWindowTitle(
-                        f"OsdagBridge Task 02 — Run {index}/3 complete — regenerated plot"
+                        f"OsdagBridge {TASK_LABEL} — Run {index}/3 complete — regenerated plot"
                     )
                     pump(0.5)
                     showcase(1.5)
                     window.cad_3d_view_toggle(force_show=True)
                     window.setWindowTitle(
-                        f"OsdagBridge Task 02 — Run {index}/3 complete — regenerated 3D CAD"
+                        f"OsdagBridge {TASK_LABEL} — Run {index}/3 complete — regenerated 3D CAD"
                     )
                     pump(0.5)
                     showcase(1.5)
@@ -301,8 +303,14 @@ def main() -> int:
             meta["same_window_all_runs"] = len({r["window_id"] for r in meta["runs"]}) == 1
             meta["same_backend_all_runs"] = len({r["backend_id"] for r in meta["runs"]}) == 1
             meta["status"] = "execution_completed"
-            window.setWindowTitle("OsdagBridge Task 02 — all three consecutive runs complete")
-            signal_and_wait(DEMO_DONE_FILE, DEMO_STOP_FILE)
+            window.setWindowTitle(f"OsdagBridge {TASK_LABEL} — all three consecutive runs complete")
+            try:
+                signal_and_wait(DEMO_DONE_FILE, DEMO_STOP_FILE)
+            except TimeoutError as exc:
+                # The recorder handshake happens only after every design and
+                # evidence export has completed. A late recorder stop must not
+                # relabel a fully completed engineering run as incomplete.
+                meta["recorder_stop_warning"] = str(exc)
         except BaseException:
             meta["status"] = "incomplete"
             meta["error"] = traceback.format_exc()

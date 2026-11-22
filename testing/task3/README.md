@@ -18,7 +18,8 @@ Tested against `Nidhikhare12/OsdagBridge` `dev` commit `d74f56dd7f22925fb8148cab
 - `reports/`: final comprehensive PDF.
 - `notes/github_issue_drafts.md`: two issue bodies that could not be posted because the GitHub integration is read-only.
 - `resume/`: updated resume supplied in Task 2.
-- `video/`: authentic silent three-run demonstration.
+- `video/Task3_Testing_Demonstration.mp4`: newly recorded Task 3-only silent demonstration (111.39 s, 1920×1200). It shows the custom girder material, three consecutive same-session runs, regenerated structural plots, and regenerated 3D CAD/deck views.
+- `evidence/session_video_redo/`: dictionaries, OSI files, screenshots, CAD images, plots, and session metadata created by the newly recorded run (`TASK3-REDO-VIDEO-02`).
 
 Repository branch: https://github.com/ananditasinha3004/OsdagBridge/tree/codex/task3-comprehensive-output-verification
 
