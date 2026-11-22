@@ -342,7 +342,7 @@ story += [table([
     ["T2-CHECK-02", "Structural girder count consistency", "FAIL", "4 input/CAD vs 6 design results; #113"],
 ], [32*mm, 86*mm, 50*mm, 93*mm], font=8.2), p("Interpretation of PASS", "H2"), p("The run-level PASS means the application completed and refreshed the tested state. It does not mean the engineering design itself passed every code check or that all calculations are defect-free. The #113 calculation defect applies to all three runs.")]
 
-story += [PageBreak(), p("12. Submission Package and Remaining Human Step", "Title")]
+story += [PageBreak(), p("12. Submission Package", "Title")]
 story += [table([
     ["Deliverable", "Location / status"],
     ["GitHub repository", p(f'<link href="{REPO_URL}">{REPO_URL}</link>', "Link")],
@@ -351,8 +351,8 @@ story += [table([
     ["Automation and logs", "task2/scripts and task2/evidence/session_02"],
     ["Test-case OSI files", "run_1/TASK2_run_1.osi through run_3/TASK2_run_3.osi"],
     ["Resume", "task2/resume/Anandita_Sinha_Resume_v2.pdf (existing supplied file)"],
-    ["Video demonstration", "Requires an authentic screen recording and accessible upload URL; no fabricated link supplied"],
-], [60*mm, 201*mm], font=8.3), p("Video capture checklist", "H2"), p("Record the real application showing: (1) custom material dialog with non-default values, (2) Design, unlock, edit, and Design for three consecutive runs without restart, (3) rotation/display of the final 3D CAD, and (4) one structural plot. The recording can be silent. Upload to YouTube/Drive with link access enabled, then add the URL to README and this report."), p("Conclusion", "H2"), p("The Task 2 same-session sequence is reproducible and evidence-backed. State clearing and regeneration worked for the tested geometry/material-retention sequence, but the independent reproduction of #113 prevents treating the resulting engineering outputs as fully trustworthy until the deck-edge/girder mapping is corrected and regression-tested.", "Callout")]
+    ["Video demonstration", p('<link href="https://github.com/ananditasinha3004/OsdagBridge/blob/codex/task2-multirun-testing/testing/task2/video/Task2_MultiRun_Demonstration.mp4">Public GitHub video (114.85 s, 1920 x 1200, silent)</link>', "Link")],
+], [60*mm, 201*mm], font=8.3), p("Video verification", "H2"), p("The authentic screen capture shows: (1) the custom material dialog and non-default Fy 360 MPa, Fu 510 MPa, E 205 GPa values, (2) Design, unlock, edit, and Design for three consecutive runs without restarting the application, (3) a regenerated structural shear plot after completed runs, and (4) the regenerated 3D CAD, ending on the 35 m / -5 degree model. The final MP4 was visually sampled at seven timestamps and contains only OsdagBridge during the captured interval."), p("Conclusion", "H2"), p("The Task 2 same-session sequence is reproducible and evidence-backed. State clearing and regeneration worked for the tested geometry/material-retention sequence, but the independent reproduction of #113 prevents treating the resulting engineering outputs as fully trustworthy until the deck-edge/girder mapping is corrected and regression-tested.", "Callout")]
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
 doc.build(story)

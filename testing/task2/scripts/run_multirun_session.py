@@ -26,6 +26,11 @@ RUNS = [
     {"span": "35", "skew": "-5", "label": "long-span-negative-skew"},
 ]
 CUSTOM_GIRDER = {"fy": "360", "fu": "510", "e": "205"}
+DEMO_PAUSE = float(os.environ.get("OSDAGBRIDGE_DEMO_PAUSE", "0"))
+DEMO_READY_FILE = os.environ.get("OSDAGBRIDGE_DEMO_READY_FILE")
+DEMO_GO_FILE = os.environ.get("OSDAGBRIDGE_DEMO_GO_FILE")
+DEMO_DONE_FILE = os.environ.get("OSDAGBRIDGE_DEMO_DONE_FILE")
+DEMO_STOP_FILE = os.environ.get("OSDAGBRIDGE_DEMO_STOP_FILE")
 UI_KEYS = [
     "geometry.span",
     "geometry.skew_angle",
@@ -80,6 +85,24 @@ def main() -> int:
         while time.monotonic() < deadline:
             app.processEvents()
             time.sleep(0.02)
+
+    def showcase(multiplier: float = 1.0) -> None:
+        """Keep important GUI states visible when recording a demonstration."""
+        if DEMO_PAUSE > 0:
+            pump(DEMO_PAUSE * multiplier)
+
+    def signal_and_wait(signal_path: str | None, wait_path: str | None) -> None:
+        """Synchronize the GUI with an external screen recorder in demo mode."""
+        if not signal_path:
+            return
+        Path(signal_path).write_text("ready\n", encoding="utf-8")
+        if not wait_path:
+            return
+        deadline = time.monotonic() + 120
+        while not Path(wait_path).exists() and time.monotonic() < deadline:
+            pump(0.1)
+        if not Path(wait_path).exists():
+            raise TimeoutError(f"Demo synchronization timed out waiting for {wait_path}")
 
     def custom_message(box):
         box.show()
@@ -157,6 +180,8 @@ def main() -> int:
             baseline = yaml.safe_load((task1 / "osi/TC01_baseline.osi").read_text())
             window.input_dock.populate_from_dict(baseline)
             pump(0.5)
+            window.setWindowTitle("OsdagBridge Task 02 — ready to record")
+            signal_and_wait(DEMO_READY_FILE, DEMO_GO_FILE)
 
             def material_dialog(dialog):
                 dialog.show()
@@ -168,6 +193,7 @@ def main() -> int:
                     widget.editingFinished.emit()
                 pump()
                 dialog.grab().save(str(dest / "custom_girder_dialog.png"))
+                showcase(1.5)
                 dialog._validate_and_save()
                 meta["custom_girder_export_fields"] = dialog.get_export_fields()
                 persist()
@@ -178,6 +204,10 @@ def main() -> int:
                 edit("material.girder", "Custom")
 
             for index, spec in enumerate(RUNS, start=1):
+                window.setWindowTitle(
+                    f"OsdagBridge Task 02 — Run {index}/3 — span {spec['span']} m, "
+                    f"skew {spec['skew']}°"
+                )
                 run_dir = dest / f"run_{index}"
                 run_dir.mkdir()
                 run = {
@@ -204,6 +234,7 @@ def main() -> int:
                     }
                     window.grab().save(str(run_dir / "after_unlock.png"))
                     assert not window.input_dock.is_locked
+                    showcase()
 
                 run["edits"].append(edit("geometry.span", spec["span"]))
                 run["edits"].append(edit("geometry.skew_angle", spec["skew"]))
@@ -211,6 +242,7 @@ def main() -> int:
                 dump(run_dir / "ui_before_design.json", run["ui_before_design"])
                 dump(run_dir / "input_before_save.json", window.input_dict)
                 window.grab().save(str(run_dir / "inputs.png"))
+                showcase()
 
                 osi_path = run_dir / f"TASK2_run_{index}.osi"
                 with patch.object(QFileDialog, "getSaveFileName", return_value=(str(osi_path), "")):
@@ -219,11 +251,15 @@ def main() -> int:
                 dump(run_dir / "input_after_save.json", window.input_dict)
 
                 window.input_dock.design_btn.click()
+                window.setWindowTitle(f"OsdagBridge Task 02 — Run {index}/3 — designing…")
                 deadline = time.monotonic() + 300
                 while getattr(window, "_design_running", False) and time.monotonic() < deadline:
                     pump(0.1)
                 assert not getattr(window, "_design_running", False), "Design timeout"
                 assert window.input_dock.is_locked, "Design workflow did not complete and lock inputs"
+                window.setWindowTitle(
+                    f"OsdagBridge Task 02 — Run {index}/3 complete — 3D CAD and plots updated"
+                )
 
                 run["finished_at"] = datetime.now(ZoneInfo("Asia/Kolkata")).isoformat()
                 run["ui_after_design"] = ui_values()
@@ -246,11 +282,27 @@ def main() -> int:
                 window.plots_widget._fig.savefig(run_dir / "plot.png", dpi=180, bbox_inches="tight")
                 run["cad_saved"] = bool(window.cad_3d_widget.display.View.Dump(str(run_dir / "cad.png")))
                 persist()
+                showcase(1.5)
+                if DEMO_PAUSE > 0:
+                    window.plots_view_toggle()
+                    window.setWindowTitle(
+                        f"OsdagBridge Task 02 — Run {index}/3 complete — regenerated plot"
+                    )
+                    pump(0.5)
+                    showcase(1.5)
+                    window.cad_3d_view_toggle(force_show=True)
+                    window.setWindowTitle(
+                        f"OsdagBridge Task 02 — Run {index}/3 complete — regenerated 3D CAD"
+                    )
+                    pump(0.5)
+                    showcase(1.5)
 
             meta["same_process_all_runs"] = len({r["process_pid"] for r in meta["runs"]}) == 1
             meta["same_window_all_runs"] = len({r["window_id"] for r in meta["runs"]}) == 1
             meta["same_backend_all_runs"] = len({r["backend_id"] for r in meta["runs"]}) == 1
             meta["status"] = "execution_completed"
+            window.setWindowTitle("OsdagBridge Task 02 — all three consecutive runs complete")
+            signal_and_wait(DEMO_DONE_FILE, DEMO_STOP_FILE)
         except BaseException:
             meta["status"] = "incomplete"
             meta["error"] = traceback.format_exc()

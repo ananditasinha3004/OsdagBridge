@@ -27,6 +27,10 @@ tracked upstream as https://github.com/Nidhikhare12/OsdagBridge/issues/113.
 - `test_log.csv`: compact case index.
 - `notes/multirun_findings.md`: detailed technical findings and issue map.
 - `reports/Task2_MultiRun_State_Persistence_Report.pdf`: final report.
+- `video/Task2_MultiRun_Demonstration.mp4`: 114.85 s silent screencast showing
+  the custom material dialog, three consecutive same-session designs, regenerated
+  structural plots, and regenerated 3D CAD. Public playback/download:
+  https://github.com/ananditasinha3004/OsdagBridge/blob/codex/task2-multirun-testing/testing/task2/video/Task2_MultiRun_Demonstration.mp4
 - `resume/`: supplied current resume attachment.
 
 ## Re-run
@@ -40,3 +44,7 @@ QT_QPA_PLATFORM_PLUGIN_PATH=/opt/miniconda3/envs/osdagbridge-env/lib/python3.12/
 ```
 
 The script refuses to overwrite an existing `session.json`.
+
+Set `OSDAGBRIDGE_DEMO_PAUSE` to a positive number to slow the workflow for a
+screen-recording demonstration. The optional `OSDAGBRIDGE_DEMO_*_FILE`
+variables coordinate recorder start/stop without exposing other applications.
