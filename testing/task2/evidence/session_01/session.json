@@ -1,0 +1,43 @@
+{
+  "session_id": "TASK2-MULTIRUN-01",
+  "started_at": "2026-11-22T20:37:56.822884+05:30",
+  "pid": 15287,
+  "method": "One QApplication, one CustomWindow, real Qt edits/signals, native Save/Design, lock-button unlock, live Matplotlib plot, and live OpenCascade CAD",
+  "runs": [
+    {
+      "run_number": 1,
+      "label": "baseline-custom-steel",
+      "started_at": "2026-11-22T20:38:01.634876+05:30",
+      "process_pid": 15287,
+      "window_id": 5811179456,
+      "backend_id": 5810510288,
+      "edits": [
+        {
+          "key": "geometry.span",
+          "before": "25",
+          "requested": "25",
+          "after": "25"
+        },
+        {
+          "key": "geometry.skew_angle",
+          "before": "0",
+          "requested": "0",
+          "after": "0"
+        }
+      ]
+    }
+  ],
+  "messages": [],
+  "custom_girder_export_fields": {
+    "material.girder.density": "76.4",
+    "material.girder.fy": "360",
+    "material.girder.fu": "510",
+    "material.girder.e": "205",
+    "material.girder.g": "78.8",
+    "material.girder.poisson": "0.3",
+    "material.girder.thermal": "11.7"
+  },
+  "status": "incomplete",
+  "error": "Traceback (most recent call last):\n  File \"/Users/ananditasinha/Documents/ChatGPT/osdag_bridge/task2/scripts/run_multirun_session.py\", line 211, in main\n    run[\"ui_before_design\"] = ui_values()\n                              ^^^^^^^^^^^\n  File \"/Users/ananditasinha/Documents/ChatGPT/osdag_bridge/task2/scripts/run_multirun_session.py\", line 133, in ui_values\n    return {key: value_of(field(key)) for key in UI_KEYS}\n                          ^^^^^^^^^^\n  File \"/Users/ananditasinha/Documents/ChatGPT/osdag_bridge/task2/scripts/run_multirun_session.py\", line 105, in field\n    raise AssertionError(f\"Widget not found: {key}\")\nAssertionError: Widget not found: geometry.number_of_girders\n",
+  "finished_at": "2026-11-22T20:38:02.073763+05:30"
+}
