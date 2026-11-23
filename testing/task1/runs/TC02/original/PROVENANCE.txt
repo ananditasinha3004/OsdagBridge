@@ -1,0 +1,1 @@
+Original TC-02 Qt desktop run. runtime.log is an exact copy of logs/TC02_final.log. Before/after input snapshots were not captured by that earlier driver. No files in this original folder are a replay.

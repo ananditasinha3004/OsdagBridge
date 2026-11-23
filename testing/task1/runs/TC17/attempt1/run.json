@@ -1,0 +1,67 @@
+{
+  "case": "TC-17",
+  "started_at": "2026-11-21T23:44:38.403251+05:30",
+  "requested": {
+    "materials": {
+      "material.deck": {
+        "fck": "45",
+        "fctm": "3.5",
+        "ecm": "35",
+        "density": "24.0"
+      }
+    }
+  },
+  "method": "Qt widget edits and signals; native Save/Design/export handlers; fresh desktop process",
+  "messages": [
+    {
+      "type": "Success",
+      "text": "Saved OSI Successfully!"
+    }
+  ],
+  "edits": [
+    {
+      "key": "material.deck",
+      "requested": "Custom",
+      "enabled": true,
+      "class": "NoScrollComboBox",
+      "options": [
+        "M15",
+        "M20",
+        "M25",
+        "M30",
+        "M35",
+        "M40",
+        "M45",
+        "M50",
+        "M55",
+        "M60",
+        "M65",
+        "M70",
+        "M75",
+        "M80",
+        "M85",
+        "M90",
+        "Custom"
+      ],
+      "before": "M40",
+      "after": "custom_concrete_45_3.5"
+    }
+  ],
+  "custom_dialogs": {
+    "material.deck": {
+      "result": 1,
+      "fields": {
+        "material.deck.density": "24.0",
+        "material.deck.fck": "45",
+        "material.deck.fctm": "3.5",
+        "material.deck.ecm": "35",
+        "material.deck.thermal": "11.7"
+      }
+    }
+  },
+  "input_locked": true,
+  "cad_saved": true,
+  "workbook_saved": true,
+  "status": "execution_completed",
+  "finished_at": "2026-11-21T23:44:58.753173+05:30"
+}

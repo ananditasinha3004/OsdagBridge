@@ -1,0 +1,1 @@
+TC-01 evidence-completion replay. Started 2026-11-22T08:29:31.632542+05:30; finished 2026-11-22T08:29:51.439666+05:30. Source commit d74f56dd7f22925fb8148cabf5740ed8d1e39ff3. This log was captured live during this replay, not the original manual test.

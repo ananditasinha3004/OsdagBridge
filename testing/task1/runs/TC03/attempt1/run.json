@@ -1,0 +1,31 @@
+{
+  "case": "TC-03",
+  "started_at": "2026-11-21T23:38:41.802347+05:30",
+  "requested": {
+    "basic": {
+      "geometry.span": "45"
+    }
+  },
+  "method": "Qt widget edits and signals; native Save/Design/export handlers; fresh desktop process",
+  "messages": [
+    {
+      "type": "Success",
+      "text": "Saved OSI Successfully!"
+    }
+  ],
+  "edits": [
+    {
+      "key": "geometry.span",
+      "requested": "45",
+      "enabled": true,
+      "class": "QLineEdit",
+      "before": "25",
+      "after": "45"
+    }
+  ],
+  "input_locked": true,
+  "cad_saved": true,
+  "workbook_saved": true,
+  "status": "execution_completed",
+  "finished_at": "2026-11-21T23:39:18.810539+05:30"
+}

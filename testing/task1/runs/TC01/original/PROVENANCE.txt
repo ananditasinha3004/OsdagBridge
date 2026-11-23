@@ -1,0 +1,1 @@
+Original user-operated TC-01 run, 21 November 2026. The original full runtime log and output dictionary were not captured. Original screenshots include analysis completion. See ../replay1 for a separately dated fresh execution with its own real runtime log and dictionaries. Replay evidence must not be attributed to the original run.

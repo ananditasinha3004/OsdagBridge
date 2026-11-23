@@ -1,0 +1,35 @@
+{
+  "case": "TC-13",
+  "started_at": "2026-11-21T23:43:07.675911+05:30",
+  "requested": {
+    "additional": {
+      "design_options_cont.partial_factor.fatigue_strength.gamma_mf": "1.25"
+    }
+  },
+  "method": "Qt widget edits and signals; native Save/Design/export handlers; fresh desktop process",
+  "messages": [
+    {
+      "type": "Success",
+      "text": "Inputs saved successfully."
+    },
+    {
+      "type": "Success",
+      "text": "Saved OSI Successfully!"
+    }
+  ],
+  "edits": [
+    {
+      "key": "design_options_cont.partial_factor.fatigue_strength.gamma_mf",
+      "requested": "1.25",
+      "enabled": true,
+      "class": "QLineEdit",
+      "before": "1.35",
+      "after": "1.25"
+    }
+  ],
+  "input_locked": true,
+  "cad_saved": true,
+  "workbook_saved": true,
+  "status": "execution_completed",
+  "finished_at": "2026-11-21T23:43:27.959118+05:30"
+}

@@ -1,0 +1,135 @@
+{
+  "case": "TC-15",
+  "started_at": "2026-11-21T23:43:51.981129+05:30",
+  "requested": {
+    "materials": {
+      "material.cross_bracing": {
+        "fy": "300",
+        "fu": "450"
+      },
+      "material.end_diaphragm": {
+        "fy": "320",
+        "fu": "470"
+      }
+    }
+  },
+  "method": "Qt widget edits and signals; native Save/Design/export handlers; fresh desktop process",
+  "messages": [
+    {
+      "type": "Success",
+      "text": "Saved OSI Successfully!"
+    }
+  ],
+  "edits": [
+    {
+      "key": "material.cross_bracing",
+      "requested": "Custom",
+      "enabled": true,
+      "class": "NoScrollComboBox",
+      "options": [
+        "E 250A",
+        "E 250B0",
+        "E 250BR",
+        "E 250C",
+        "E 275A",
+        "E 275B0",
+        "E 275BR",
+        "E 275C",
+        "E 300A",
+        "E 300B0",
+        "E 300BR",
+        "E 300C",
+        "E 350A",
+        "E 350B0",
+        "E 350BR",
+        "E 350C",
+        "E 410A",
+        "E 410B0",
+        "E 410BR",
+        "E 410C",
+        "E 450A",
+        "E 450BR",
+        "E 550A",
+        "E 550BR",
+        "E 600A",
+        "E 600BR",
+        "E 650A",
+        "E 650BR",
+        "Custom"
+      ],
+      "before": "E 350A",
+      "after": "custom_steel_300_450"
+    },
+    {
+      "key": "material.end_diaphragm",
+      "requested": "Custom",
+      "enabled": true,
+      "class": "NoScrollComboBox",
+      "options": [
+        "E 250A",
+        "E 250B0",
+        "E 250BR",
+        "E 250C",
+        "E 275A",
+        "E 275B0",
+        "E 275BR",
+        "E 275C",
+        "E 300A",
+        "E 300B0",
+        "E 300BR",
+        "E 300C",
+        "E 350A",
+        "E 350B0",
+        "E 350BR",
+        "E 350C",
+        "E 410A",
+        "E 410B0",
+        "E 410BR",
+        "E 410C",
+        "E 450A",
+        "E 450BR",
+        "E 550A",
+        "E 550BR",
+        "E 600A",
+        "E 600BR",
+        "E 650A",
+        "E 650BR",
+        "custom_steel_300_450",
+        "Custom"
+      ],
+      "before": "E 350A",
+      "after": "custom_steel_320_470"
+    }
+  ],
+  "custom_dialogs": {
+    "material.cross_bracing": {
+      "result": 1,
+      "fields": {
+        "material.cross_bracing.density": "76.4",
+        "material.cross_bracing.fy": "300",
+        "material.cross_bracing.fu": "450",
+        "material.cross_bracing.e": "200.0",
+        "material.cross_bracing.g": "76.9",
+        "material.cross_bracing.poisson": "0.3",
+        "material.cross_bracing.thermal": "11.7"
+      }
+    },
+    "material.end_diaphragm": {
+      "result": 1,
+      "fields": {
+        "material.end_diaphragm.density": "76.4",
+        "material.end_diaphragm.fy": "320",
+        "material.end_diaphragm.fu": "470",
+        "material.end_diaphragm.e": "200.0",
+        "material.end_diaphragm.g": "76.9",
+        "material.end_diaphragm.poisson": "0.3",
+        "material.end_diaphragm.thermal": "11.7"
+      }
+    }
+  },
+  "input_locked": true,
+  "cad_saved": true,
+  "workbook_saved": true,
+  "status": "execution_completed",
+  "finished_at": "2026-11-21T23:44:13.064201+05:30"
+}

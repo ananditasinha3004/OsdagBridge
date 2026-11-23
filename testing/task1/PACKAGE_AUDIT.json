@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-11-22T08:32:12.846137+05:30",
+  "cases": 17,
+  "top_level_osi_cases": 17,
+  "individual_test_reports": 17,
+  "case_run_folders": 17,
+  "screenshot_case_groups": 17,
+  "runtime_log_cases": 17,
+  "original_runtime_log_missing": [
+    "TC01"
+  ],
+  "TC01_replay_started_at": "2026-11-22T08:29:31.632542+05:30",
+  "TC01_replay_status": "execution_completed",
+  "note": "Every indexed path and every archived file hash is verified by repair_package.py. TC01 log is from a separate replay, not its original manual run."
+}

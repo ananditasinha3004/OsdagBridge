@@ -30,8 +30,7 @@ tracked upstream as https://github.com/Nidhikhare12/OsdagBridge/issues/113.
 - `video/Task2_MultiRun_Demonstration.mp4`: 114.85 s silent screencast showing
   the custom material dialog, three consecutive same-session designs, regenerated
   structural plots, and regenerated 3D CAD. Public playback/download:
-  https://github.com/ananditasinha3004/OsdagBridge/blob/codex/task2-multirun-testing/testing/task2/video/Task2_MultiRun_Demonstration.mp4
-- `resume/`: supplied current resume attachment.
+  https://github.com/ananditasinha3004/OsdagBridge/blob/codex/final-submission/testing/task2/video/Task2_MultiRun_Demonstration.mp4
 
 ## Re-run
 

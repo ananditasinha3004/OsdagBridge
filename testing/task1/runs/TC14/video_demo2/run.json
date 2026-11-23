@@ -1,0 +1,80 @@
+{
+  "case": "TC-14",
+  "started_at": "2026-11-22T21:37:54.898497+05:30",
+  "requested": {
+    "materials": {
+      "material.girder": {
+        "fy": "360",
+        "fu": "510",
+        "e": "205"
+      }
+    }
+  },
+  "method": "Qt widget edits and signals; native Save/Design/export handlers; fresh desktop process",
+  "messages": [
+    {
+      "type": "Success",
+      "text": "Saved OSI Successfully!"
+    }
+  ],
+  "edits": [
+    {
+      "key": "material.girder",
+      "requested": "Custom",
+      "enabled": true,
+      "class": "NoScrollComboBox",
+      "options": [
+        "E 250A",
+        "E 250B0",
+        "E 250BR",
+        "E 250C",
+        "E 275A",
+        "E 275B0",
+        "E 275BR",
+        "E 275C",
+        "E 300A",
+        "E 300B0",
+        "E 300BR",
+        "E 300C",
+        "E 350A",
+        "E 350B0",
+        "E 350BR",
+        "E 350C",
+        "E 410A",
+        "E 410B0",
+        "E 410BR",
+        "E 410C",
+        "E 450A",
+        "E 450BR",
+        "E 550A",
+        "E 550BR",
+        "E 600A",
+        "E 600BR",
+        "E 650A",
+        "E 650BR",
+        "Custom"
+      ],
+      "before": "E 350A",
+      "after": "custom_steel_360_510"
+    }
+  ],
+  "custom_dialogs": {
+    "material.girder": {
+      "result": 1,
+      "fields": {
+        "material.girder.density": "76.4",
+        "material.girder.fy": "360",
+        "material.girder.fu": "510",
+        "material.girder.e": "205",
+        "material.girder.g": "78.8",
+        "material.girder.poisson": "0.3",
+        "material.girder.thermal": "11.7"
+      }
+    }
+  },
+  "input_locked": true,
+  "cad_saved": true,
+  "workbook_saved": true,
+  "status": "execution_completed",
+  "finished_at": "2026-11-22T21:38:16.248078+05:30"
+}

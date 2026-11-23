@@ -1,0 +1,15 @@
+{
+  "method": "Call the same defaults function invoked unconditionally by saveOSI_inputs; initialize baseline before applying changes",
+  "before": {
+    "typical_section.deck_thickness": 275,
+    "loading.seismic_load.damping": 5,
+    "design_options.deck.top_clear_cover": 60,
+    "design_options_cont.partial_factor.fatigue_strength.gamma_mf": 1.25
+  },
+  "after": {
+    "typical_section.deck_thickness": 250.0,
+    "loading.seismic_load.damping": "2",
+    "design_options.deck.top_clear_cover": "50",
+    "design_options_cont.partial_factor.fatigue_strength.gamma_mf": "1.35"
+  }
+}
