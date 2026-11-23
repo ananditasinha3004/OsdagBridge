@@ -469,7 +469,7 @@ story += [
         ["Master log", "testing/task4/test_log.csv and test_log.json", "36 unique records; required fields non-empty"],
         ["Atomic output audit", "testing/task4/data/task3/output_verification.csv/json", "59 checks: 50 PASS, 9 FAIL"],
         ["Test inputs", "testing/task4/osi/task1 and osi/multirun", "All authoritative Task 1 and multi-run OSI files"],
-        ["Video", link(VIDEO, VIDEO), "Silent 114.85 s custom material + three runs + plots + CAD"],
+        ["Video", link(VIDEO, VIDEO), "Fresh 128.70 s Task 4 capture: custom material + three same-process runs + plots + CAD"],
         ["Live issues", "Fork #1/#2 plus upstream #43/#71/#113/#171/#172", "Links and code-level fix map in Section 15"],
     ], [50*mm, 145*mm, 67*mm], font=7.3),
     p("Rebuild", "H2"),

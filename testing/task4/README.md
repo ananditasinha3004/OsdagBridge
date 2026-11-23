@@ -30,7 +30,10 @@ FAIL results.
 - ZIP package: `dist/OsdagBridge_Task4_Submission.zip`
 - Test inputs: `osi/task1/` and `osi/multirun/`
 - Reproducible scripts: `scripts/`
-- Silent demonstration: `video/Task4_Testing_Demonstration.mp4`
+- Fresh Task 4 demonstration: `video/Task4_Testing_Demonstration.mp4`
+  (128.70 s, 1920 x 1200, H.264; session `TASK4-FRESH-VIDEO-01`)
+- Fresh recording evidence: `evidence/session_video_task4_fresh_02/`
+  (custom material plus three consecutive same-process runs, plots, and 3D CAD)
 
 Repository branch:
 https://github.com/ananditasinha3004/OsdagBridge/tree/codex/task4-test-case-documentation

@@ -18,6 +18,8 @@ ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "reports/Task4_Comprehensive_Test_Case_Documentation.pdf"
 ZIP_PATH = ROOT / "dist/OsdagBridge_Task4_Submission.zip"
 MANIFEST = ROOT / "MANIFEST_SHA256.txt"
+VIDEO_SESSION = ROOT / "evidence/session_video_task4_fresh_02/session.json"
+REUSED_TASK2_VIDEO_SHA256 = "366b8564cdd80242179ff72d6f8d7a61b4b24ee80fd6aeb1bcbb23eea00ebde2"
 
 required = [
     ROOT / "README.md",
@@ -27,6 +29,7 @@ required = [
     ROOT / "data/task3/output_verification.csv",
     ROOT / "data/task3/output_verification.json",
     ROOT / "video/Task4_Testing_Demonstration.mp4",
+    VIDEO_SESSION,
     PDF,
     ZIP_PATH,
     MANIFEST,
@@ -79,6 +82,18 @@ for issue in ("issues/1", "issues/2", "issues/43", "issues/71", "issues/113", "i
 video = ROOT / "video/Task4_Testing_Demonstration.mp4"
 head = video.read_bytes()[:32]
 assert b"ftyp" in head and video.stat().st_size > 1_000_000
+video_sha256 = hashlib.sha256(video.read_bytes()).hexdigest()
+assert video_sha256 != REUSED_TASK2_VIDEO_SHA256, "Task 2 screencast was reused"
+
+video_session = json.loads(VIDEO_SESSION.read_text())
+assert video_session["session_id"] == "TASK4-FRESH-VIDEO-01"
+assert video_session["status"] == "execution_completed"
+assert len(video_session["runs"]) == 3
+for flag in ("same_process_all_runs", "same_window_all_runs", "same_backend_all_runs"):
+    assert video_session[flag] is True, flag
+for index, run in enumerate(video_session["runs"], 1):
+    assert run["run_number"] == index
+    assert (VIDEO_SESSION.parent / f"run_{index}/TASK4_video_run_{index}.osi").is_file()
 
 manifest_entries = {}
 for line in MANIFEST.read_text().splitlines():
@@ -109,4 +124,5 @@ print(f"Atomic checks: {audit['checks_total']} ({audit['pass']} pass, {audit['fa
 print(f"PDF: {len(reader.pages)} pages, {len(uris)} link annotations")
 print(f"OSI files: {len(osi_files)}")
 print(f"ZIP entries: {len(names)}")
+print(f"Fresh video session: {video_session['session_id']} ({len(video_session['runs'])} runs)")
 
