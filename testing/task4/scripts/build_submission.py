@@ -1,38 +1,40 @@
 #!/usr/bin/env python3
-"""Create the Task 5 SHA-256 manifest and submission ZIP."""
+"""Create the final repository-wide manifest and submission ZIP."""
 
 from __future__ import annotations
 
 import hashlib
+import subprocess
 import zipfile
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "MANIFEST_SHA256.txt"
-ZIP_PATH = ROOT / "dist/OsdagBridge_Task5_Submission.zip"
-ARCHIVE_ROOT = "OsdagBridge_Task5_Submission"
-EXCLUDED_SUPERSEDED_REPORTS = {
-    "Task4_Comprehensive_Test_Case_Documentation.pdf",
-}
+REPO_ROOT = Path(__file__).resolve().parents[3]
+TASK_ROOT = REPO_ROOT / "testing/task4"
+MANIFEST = REPO_ROOT / "testing/FINAL_SUBMISSION_MANIFEST_SHA256.txt"
+ZIP_PATH = TASK_ROOT / "dist/OsdagBridge_Final_Submission.zip"
+ARCHIVE_ROOT = "OsdagBridge_Final_Submission"
 
 
 def included_files():
-    for path in sorted(ROOT.rglob("*")):
-        if not path.is_file():
+    result = subprocess.run(
+        ["git", "-C", str(REPO_ROOT), "ls-files", "-co", "--exclude-standard", "-z"],
+        check=True,
+        capture_output=True,
+    )
+    for raw in sorted(filter(None, result.stdout.split(b"\0"))):
+        relative = Path(raw.decode("utf-8"))
+        path = REPO_ROOT / relative
+        if not path.is_file() or path == MANIFEST:
             continue
-        relative = path.relative_to(ROOT)
-        if relative == MANIFEST.relative_to(ROOT):
+        lower_parts = tuple(part.lower() for part in relative.parts)
+        if relative.parts[:3] == ("testing", "task4", "dist"):
             continue
-        if relative.parts[0] == "dist":
+        if "tmp" in lower_parts or lower_parts[:4] == ("testing", "task4", "reports", "qa"):
             continue
-        if relative.parts[:2] == ("reports", "qa"):
+        if path.suffix.lower() in {".mp4", ".mov", ".m4v"}:
             continue
-        if relative.parts[0] == "reports" and relative.name in EXCLUDED_SUPERSEDED_REPORTS:
-            continue
-        if relative.parts[:2] == ("evidence", "session_video_task4_fresh"):
-            continue
-        if relative.parts[0] == "video":
+        if "resume" in lower_parts or relative.stem.lower() in {"cv", "curriculum_vitae"}:
             continue
         yield path
 
@@ -47,14 +49,14 @@ def sha256(path: Path) -> str:
 
 files = list(included_files())
 MANIFEST.write_text(
-    "".join(f"{sha256(path)}  {path.relative_to(ROOT).as_posix()}\n" for path in files),
+    "".join(f"{sha256(path)}  {path.relative_to(REPO_ROOT).as_posix()}\n" for path in files),
     encoding="utf-8",
 )
 
 ZIP_PATH.parent.mkdir(parents=True, exist_ok=True)
 with zipfile.ZipFile(ZIP_PATH, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
     for path in files + [MANIFEST]:
-        archive.write(path, f"{ARCHIVE_ROOT}/{path.relative_to(ROOT).as_posix()}")
+        archive.write(path, f"{ARCHIVE_ROOT}/{path.relative_to(REPO_ROOT).as_posix()}")
 
 print(f"Manifest: {MANIFEST} ({len(files)} files)")
 print(f"ZIP: {ZIP_PATH} ({ZIP_PATH.stat().st_size} bytes)")

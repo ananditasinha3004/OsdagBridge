@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the Task 5 report, logs, evidence, manifest, and ZIP."""
+"""Validate the consolidated Tasks 1-5 report and repository-wide ZIP."""
 
 from __future__ import annotations
 
@@ -14,10 +14,11 @@ from pathlib import Path
 from pypdf import PdfReader
 
 
-ROOT = Path(__file__).resolve().parents[1]
-PDF = ROOT / "reports/Task5_Comprehensive_Testing_and_Code_Level_Report.pdf"
-ZIP_PATH = ROOT / "dist/OsdagBridge_Task5_Submission.zip"
-MANIFEST = ROOT / "MANIFEST_SHA256.txt"
+REPO_ROOT = Path(__file__).resolve().parents[3]
+ROOT = REPO_ROOT / "testing/task4"
+PDF = ROOT / "reports/OsdagBridge_Tasks_1_to_5_Comprehensive_Testing_Report.pdf"
+ZIP_PATH = ROOT / "dist/OsdagBridge_Final_Submission.zip"
+MANIFEST = REPO_ROOT / "testing/FINAL_SUBMISSION_MANIFEST_SHA256.txt"
 VIDEO_SESSION = ROOT / "evidence/session_video_task4_fresh_02/session.json"
 
 required = [
@@ -58,6 +59,7 @@ reader = PdfReader(str(PDF))
 assert len(reader.pages) == 21
 text = "\n".join(page.extract_text() or "" for page in reader.pages)
 for phrase in (
+    "all five assignment tasks",
     "Executive Summary",
     "UI vs Input/Output Dictionaries",
     "3D CAD Generation Across Runs",
@@ -92,25 +94,28 @@ for line in MANIFEST.read_text().splitlines():
     digest, relative = line.split("  ", 1)
     manifest_entries[relative] = digest
 for relative, expected in manifest_entries.items():
-    path = ROOT / relative
+    path = REPO_ROOT / relative
     actual = hashlib.sha256(path.read_bytes()).hexdigest()
     assert actual == expected, relative
 
 with zipfile.ZipFile(ZIP_PATH) as archive:
     assert archive.testzip() is None
     names = set(archive.namelist())
-    prefix = "OsdagBridge_Task5_Submission/"
+    prefix = "OsdagBridge_Final_Submission/"
     for relative in (
-        "README.md",
-        "test_log.csv",
-        "reports/Task5_Comprehensive_Testing_and_Code_Level_Report.pdf",
-        "MANIFEST_SHA256.txt",
+        "pyproject.toml",
+        "src/osdagbridge/cli/commands.py",
+        "testing/task4/README.md",
+        "testing/task4/test_log.csv",
+        "testing/task4/reports/OsdagBridge_Tasks_1_to_5_Comprehensive_Testing_Report.pdf",
+        "testing/FINAL_SUBMISSION_MANIFEST_SHA256.txt",
     ):
         assert prefix + relative in names
     assert sum(name.endswith(".osi") for name in names) >= 20
     assert not any(name.lower().endswith((".mp4", ".mov", ".m4v")) for name in names)
+    assert not any("resume" in name.lower() or name.lower().endswith("/cv.pdf") for name in names)
 
-print("Task 5 validation PASS")
+print("Tasks 1-5 final submission validation PASS")
 print(f"Records: {len(rows)} ({dict(verdicts)})")
 print(f"Atomic checks: {audit['checks_total']} ({audit['pass']} pass, {audit['fail']} fail)")
 print(f"PDF: {len(reader.pages)} pages, {len(uris)} link annotations")

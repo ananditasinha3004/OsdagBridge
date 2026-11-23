@@ -1,4 +1,4 @@
-# OsdagBridge Task 5 - GitHub Issue Creation and Code-Level Reporting
+# OsdagBridge Tasks 1-5 - Final Consolidated Submission
 
 Tested against `Nidhikhare12/OsdagBridge` branch `dev`, commit
 `d74f56dd7f22925fb8148cabf5740ed8d1e39ff3`.
@@ -23,11 +23,11 @@ FAIL results.
 
 ## Deliverables
 
-- Comprehensive PDF:
-  `reports/Task5_Comprehensive_Testing_and_Code_Level_Report.pdf`
+- Single consolidated Tasks 1-5 PDF:
+  `reports/OsdagBridge_Tasks_1_to_5_Comprehensive_Testing_Report.pdf`
 - Master logs: `test_log.csv` and `test_log.json`
 - Atomic output audit: `data/task3/output_verification.csv` and `.json`
-- ZIP package: `dist/OsdagBridge_Task5_Submission.zip`
+- Complete repository and evidence ZIP: `dist/OsdagBridge_Final_Submission.zip`
 - Test inputs: `osi/task1/` and `osi/multirun/`
 - Reproducible scripts: `scripts/`
 - Video demonstration: retained outside the repository for later YouTube

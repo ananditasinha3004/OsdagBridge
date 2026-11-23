@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the comprehensive Task 5 testing and code-level report."""
+"""Generate the consolidated Tasks 1-5 testing and code-level report."""
 
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ from PIL import Image as PILImage
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "reports/Task5_Comprehensive_Testing_and_Code_Level_Report.pdf"
+OUT = ROOT / "reports/OsdagBridge_Tasks_1_to_5_Comprehensive_Testing_Report.pdf"
 EVIDENCE = ROOT / "evidence"
 PAGE_W, PAGE_H = landscape(A4)
 REPO = "https://github.com/ananditasinha3004/OsdagBridge/tree/dev"
@@ -136,7 +136,7 @@ def header_footer(canvas, doc):
     canvas.rect(0, PAGE_H - 12 * mm, PAGE_W, 12 * mm, fill=1, stroke=0)
     canvas.setFillColor(colors.white)
     canvas.setFont("Helvetica-Bold", 8.2)
-    canvas.drawString(14 * mm, PAGE_H - 8 * mm, "OsdagBridge Task 5 | Comprehensive Testing and Code-Level Reporting")
+    canvas.drawString(14 * mm, PAGE_H - 8 * mm, "OsdagBridge Tasks 1-5 | Consolidated Testing and Code-Level Report")
     canvas.setFillColor(MID)
     canvas.setFont("Helvetica", 7.5)
     canvas.drawString(14 * mm, 7.5 * mm, "Prepared 23 Nov 2026 IST | dev @ d74f56d | Evidence-backed, no source patch applied")
@@ -159,7 +159,7 @@ def cover(canvas, doc):
     canvas.drawString(36 * mm, PAGE_H - 67 * mm, "TEST-CASE DOCUMENTATION")
     canvas.setFillColor(colors.HexColor("#AFE7E9"))
     canvas.setFont("Helvetica", 14)
-    canvas.drawString(36 * mm, PAGE_H - 84 * mm, "OsdagBridge plate-girder desktop application | Task 5")
+    canvas.drawString(36 * mm, PAGE_H - 84 * mm, "OsdagBridge plate-girder desktop application | Tasks 1-5 consolidated")
     canvas.setFillColor(colors.white)
     canvas.setFont("Helvetica-Bold", 11)
     canvas.drawString(36 * mm, PAGE_H - 111 * mm, "Submission scope")
@@ -196,7 +196,7 @@ doc = BaseDocTemplate(
     rightMargin=14 * mm,
     topMargin=17 * mm,
     bottomMargin=15 * mm,
-    title="OsdagBridge Task 5 Comprehensive Testing and Code-Level Report",
+    title="OsdagBridge Tasks 1-5 Comprehensive Testing and Code-Level Report",
     author="Anandita Sinha",
 )
 doc.addPageTemplates([PageTemplate(id="all", frames=[Frame(14 * mm, 15 * mm, PAGE_W - 28 * mm, PAGE_H - 32 * mm)], onPage=on_page)])
@@ -205,7 +205,7 @@ story = [Spacer(1, 1), PageBreak()]
 
 story += [
     p("1. Executive Summary", "Title"),
-    p("This Task 5 report consolidates every authoritative test/check record executed across Tasks 1-3, the duplicate audit, and the final upstream issue submissions. It records exact parameter combinations, expected and actual results, pass/fail classification, evidence paths, and live code-level issue links. A completed application run is kept separate from an engineering design PASS: several scenarios executed normally while code-check results failed, which is a valid engineering outcome rather than a software crash."),
+    p("This single report consolidates all five assignment tasks: Task 1 rigorous input and custom-property testing; Task 2 consecutive multi-run and state-persistence testing; Task 3 UI/Input/Output dictionary, CAD, plot, component, and workbook verification; Task 4 complete successful/failed test-case documentation; and Task 5 deduplicated GitHub issue publication with code-level root causes and suggested fixes. It records exact parameter combinations, expected and actual results, pass/fail classification, evidence paths, and live issue links. A completed application run is kept separate from an engineering design PASS: several scenarios executed normally while code-check results failed, which is a valid engineering outcome rather than a software crash."),
     report_table([
         ["Measure", "Result", "Interpretation"],
         ["Master records", "36", "17 standalone parameter cases + 6 multi-run/state checks + 13 output-verification records"],
@@ -460,10 +460,10 @@ story += [PageBreak(), p("17. Submission Package and Reproducibility", "Title")]
 story += [
     report_table([
         ["Deliverable", "Location / link", "Verification"],
-        ["GitHub repository", link(REPO, REPO), "Public branch includes test logs, scripts, documentation, Task 5 report, and ZIP"],
+        ["GitHub repository", link(REPO, REPO), "The dev branch includes source, test logs, scripts, documentation, consolidated report, and ZIP"],
         ["Collaborator access", "Nidhikhare12", "Verified as a direct repository collaborator on 23 Nov 2026 IST"],
-        ["PDF report", "testing/task4/reports/Task5_Comprehensive_Testing_and_Code_Level_Report.pdf", "Rendered to PNG; page count/text/link checks"],
-        ["ZIP package", "testing/task4/dist/OsdagBridge_Task5_Submission.zip", "Manifest and archive test included"],
+        ["PDF report", "testing/task4/reports/OsdagBridge_Tasks_1_to_5_Comprehensive_Testing_Report.pdf", "Single consolidated Tasks 1-5 report; rendered to PNG and checked"],
+        ["ZIP package", "testing/task4/dist/OsdagBridge_Final_Submission.zip", "Complete tracked project and testing evidence; manifest and archive checks included"],
         ["Master log", "testing/task4/test_log.csv and test_log.json", "36 unique records; required fields non-empty"],
         ["Atomic output audit", "testing/task4/data/task3/output_verification.csv/json", "59 checks: 50 PASS, 9 FAIL"],
         ["Test inputs", "testing/task4/osi/task1 and osi/multirun", "All authoritative Task 1 and multi-run OSI files"],
@@ -473,7 +473,7 @@ story += [
     p("Rebuild", "H2"),
     p("Run python testing/task4/scripts/build_master_log.py, then python testing/task4/scripts/build_report.py, then python testing/task4/scripts/build_submission.py. validate_submission.py checks record counts, required files, PDF readability, OSI presence, issue links, video exclusion, ZIP integrity, and SHA-256 manifest consistency."),
     p("Final assessment", "H2"),
-    p("Task 5 is complete and traceable to preserved evidence and live upstream reports. The same-session workflow and graphical regeneration are stable for the tested sequence. The report should not be interpreted as validation of all engineering calculations until the linked defects - especially #113 and #257 - are corrected and regression-tested.", "Callout"),
+    p("Tasks 1-5 are consolidated and traceable to preserved evidence and live upstream reports. The same-session workflow and graphical regeneration are stable for the tested sequence. The report should not be interpreted as validation of all engineering calculations until the linked defects - especially #113 and #257 - are corrected and regression-tested.", "Callout"),
 ]
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
