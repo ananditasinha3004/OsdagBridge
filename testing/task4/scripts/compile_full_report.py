@@ -28,6 +28,7 @@ REPORTS = [
     ("Task 2 - Multi-Run and State Persistence", REPO_ROOT / "testing/task2/reports/Task2_MultiRun_State_Persistence_Report.pdf"),
     ("Task 3 - Comprehensive Output Verification", REPO_ROOT / "testing/task3/reports/Task3_Comprehensive_Output_Verification_Report.pdf"),
     ("Tasks 4-5 - Documentation and GitHub Issues", REPO_ROOT / "testing/task4/reports/Tasks4_5_Detailed_Testing_and_Issue_Report.pdf"),
+    ("Appendix - Full Screenshot Evidence", REPO_ROOT / "testing/task4/reports/Tasks_1_to_5_Screenshot_Evidence_Appendix.pdf"),
 ]
 OUT = REPO_ROOT / "testing/task4/reports/OsdagBridge_Tasks_1_to_5_Comprehensive_Testing_Report.pdf"
 FRONT = REPO_ROOT / "testing/task4/reports/.tasks_1_to_5_front_matter.pdf"
@@ -99,6 +100,7 @@ def cover(canvas, doc):
             "Consecutive same-session runs, state clearing, CAD and plots",
             "UI/Input/Output/workbook comparisons and component coverage",
             "Successful and failed cases with live issues and code-level fixes",
+            "Captioned input, verification, design, CAD and plot screenshots",
         ]
         for index, line in enumerate(lines):
             canvas.drawString(38 * mm, PAGE_H - (130 + index * 8) * mm, line)
@@ -157,7 +159,7 @@ story += [
         ["Deliverable", "Status"],
         ["GitHub repository", "dev branch contains source, logs, scripts, documentation, OSI inputs, evidence and final artifacts"],
         ["Collaborator", "Nidhikhare12 verified with direct repository access"],
-        ["PDF report", f"This detailed compilation: {sum(page_counts) + front_pages} pages"],
+        ["PDF report", f"This detailed compilation: {sum(page_counts) + front_pages} pages, including the complete screenshot appendix"],
         ["ZIP file", "Complete tracked repository and evidence archive; videos and resume excluded"],
     ], [55 * mm, 206 * mm]),
 ]
@@ -176,6 +178,8 @@ story += [
     p("The preserved evidence contains exactly three completed consecutive design runs: 25 m/0 deg, 30 m/+5 deg, and 35 m/-5 deg. The remaining Task 2 records are two verification checks and one harness setup failure. They are all included, but are not relabelled as completed design runs.", "Warning"),
     p("PASS terminology", "H2"),
     p("Software PASS means the requested workflow executed and produced the stated output. It does not mean every engineering code check passed. Engineering design failures are reported separately from software failures such as silent input replacement, missing results, incorrect units, and calculation-count mismatches.", "Callout"),
+    p("Cross-workspace artifact recovery", "H2"),
+    p("The final audit also compared the original Task 1-5 working folders against the repository. It recovered 37 Task 1 runtime logs, 100 Task 2 session/report-QA artifacts, one Task 3 native-report generation log, and 62 Task 4 reproducibility/recording-QA artifacts. Raw recordings and their failed-capture frames, resumes, old nested ZIPs, macOS metadata, and exact duplicate screenshot payloads are excluded from the final archive; the substantive evidence remains included.", "Callout"),
 ]
 
 story += [PageBreak(), p("3. Master Contents and Page Ranges", "Title")]
@@ -187,7 +191,7 @@ story += [
     p("How to review", "H2"),
     p("Use Part I for individual TC-01-TC-17 evidence; Part II for consecutive-run lifecycle and state clearing; Part III for dictionary, workbook, CAD, plot, and component verification; and Part IV for the master disposition, requirement coverage, live issue map, root causes, and final package record."),
     p("Supporting data", "H2"),
-    p("Machine-readable CSV/JSON logs, OSI files, complete dictionaries, workbooks, screenshots, scripts, notes, and the repository source are included in the accompanying ZIP and on the dev branch."),
+    p("Machine-readable CSV/JSON logs, OSI files, complete dictionaries, workbooks, scripts, notes, and the repository source are included in the accompanying ZIP and on the dev branch. The final appendix embeds every authoritative Task 1 case screenshot and every unique preserved Task 2-4 run, output, CAD, plot and recording-QA screenshot, with source paths under each figure."),
     p("Known limitations are not hidden", "H2"),
     p("The compilation preserves the TC-01 provenance limitation, the Task 2 setup failure, failed engineering checks, missing native-report PDF, empty diaphragm results, unit/export mismatches, and the four-versus-six girder defect. No failure is converted into a pass for presentation."),
 ]

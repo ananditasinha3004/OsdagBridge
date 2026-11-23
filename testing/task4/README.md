@@ -34,6 +34,12 @@ FAIL results.
   publication.
 - Fresh recording evidence: `evidence/session_video_task4_fresh_02/`
   (custom material plus three consecutive same-process runs, plots, and 3D CAD)
+- Cross-workspace artifact audit: `../ARTIFACT_COVERAGE_AUDIT.md`
+
+The final consolidation also imports supporting runtime logs, alternate
+multi-run evidence sessions, report-render QA pages, and recording-QA frames
+from the original Task 1-5 working folders. Raw recordings and the resume remain
+separate submission items, as requested.
 
 Repository branch:
 https://github.com/ananditasinha3004/OsdagBridge/tree/dev
@@ -66,6 +72,7 @@ and Poppler:
 ```sh
 python scripts/build_master_log.py
 python scripts/build_report.py
+python scripts/build_screenshot_appendix.py
 python scripts/compile_full_report.py
 python scripts/build_submission.py
 python scripts/validate_submission.py

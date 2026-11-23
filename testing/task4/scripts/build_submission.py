@@ -30,7 +30,14 @@ def included_files():
         lower_parts = tuple(part.lower() for part in relative.parts)
         if relative.parts[:3] == ("testing", "task4", "dist"):
             continue
-        if "tmp" in lower_parts or lower_parts[:4] == ("testing", "task4", "reports", "qa"):
+        if "tmp" in lower_parts:
+            continue
+        if lower_parts[:4] in {
+            ("testing", "task2", "reports", "qa_updated"),
+            ("testing", "task3", "reports", "qa"),
+        }:
+            continue
+        if lower_parts[:4] == ("testing", "task4", "reports", "qa") and "contact" in relative.name.lower():
             continue
         if path.suffix.lower() in {".mp4", ".mov", ".m4v"}:
             continue

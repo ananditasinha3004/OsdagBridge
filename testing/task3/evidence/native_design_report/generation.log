@@ -1,0 +1,12 @@
+Task 3 native design report generation
+Date: 2026-11-23 Asia/Kolkata
+Command: conda run -n osdagbridge-env python testing/task3/scripts/generate_application_report.py
+
+pdflatex run failed: [Errno 2] No such file or directory: 'pdflatex'
+pdflatex run failed: [Errno 2] No such file or directory: 'pdflatex'
+pdflatex ran but no PDF was produced.
+
+Result:
+- PDF: not created
+- TeX: testing/task3/evidence/native_design_report/OsdagBridge_Native_Design_Report_T3.tex
+- Additional portability finding: the copied TeX retains TemporaryDirectory image paths and a relative assets/osdag_logo.png reference after those temporary files have been removed.

@@ -1,0 +1,7 @@
+{
+  "geometry.span": "35",
+  "geometry.skew_angle": "-5",
+  "geometry.carriageway_width": "7.5",
+  "material.girder": "custom_steel_360_510",
+  "material.deck": "M40"
+}

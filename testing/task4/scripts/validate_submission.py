@@ -17,12 +17,14 @@ from pypdf import PdfReader
 REPO_ROOT = Path(__file__).resolve().parents[3]
 ROOT = REPO_ROOT / "testing/task4"
 PDF = ROOT / "reports/OsdagBridge_Tasks_1_to_5_Comprehensive_Testing_Report.pdf"
+SCREENSHOT_APPENDIX = ROOT / "reports/Tasks_1_to_5_Screenshot_Evidence_Appendix.pdf"
 ZIP_PATH = ROOT / "dist/OsdagBridge_Final_Submission.zip"
 MANIFEST = REPO_ROOT / "testing/FINAL_SUBMISSION_MANIFEST_SHA256.txt"
 VIDEO_SESSION = ROOT / "evidence/session_video_task4_fresh_02/session.json"
 
 required = [
     ROOT / "README.md",
+    REPO_ROOT / "testing/ARTIFACT_COVERAGE_AUDIT.md",
     ROOT / "test_log.csv",
     ROOT / "test_log.json",
     ROOT / "notes/findings_and_issue_map.md",
@@ -30,6 +32,7 @@ required = [
     ROOT / "data/task3/output_verification.json",
     VIDEO_SESSION,
     PDF,
+    SCREENSHOT_APPENDIX,
     ZIP_PATH,
     MANIFEST,
 ]
@@ -56,8 +59,10 @@ osi_files = list((ROOT / "osi").rglob("*.osi"))
 assert len(osi_files) >= 20, f"only {len(osi_files)} OSI files"
 
 reader = PdfReader(str(PDF))
-assert len(reader.pages) == 76
+assert len(reader.pages) >= 120
 assert PDF.stat().st_size < 10 * 1024 * 1024
+appendix_reader = PdfReader(str(SCREENSHOT_APPENDIX))
+assert len(appendix_reader.pages) >= 45
 text = "\n".join(page.extract_text() or "" for page in reader.pages)
 for phrase in (
     "Assignment Requirements and Evidence Map",
@@ -67,6 +72,10 @@ for phrase in (
     "3D CAD Generation Across Runs",
     "Live GitHub Issues and Code-Level Fix Map",
     "Submission Package and Reproducibility",
+    "SCREENSHOT EVIDENCE APPENDIX",
+    "Task 1 - TC01 to TC17 input, verification, design and CAD evidence",
+    "Task 2 - consecutive-run and state-persistence evidence",
+    "Task 3 - dictionary, output, CAD and plot verification evidence",
 ):
     assert phrase in text, phrase
 assert not re.search(r"TODO|turn\d+(?:search|fetch)", text, re.I)
@@ -111,16 +120,22 @@ with zipfile.ZipFile(ZIP_PATH) as archive:
         "testing/task4/test_log.csv",
         "testing/task4/reports/OsdagBridge_Tasks_1_to_5_Comprehensive_Testing_Report.pdf",
         "testing/FINAL_SUBMISSION_MANIFEST_SHA256.txt",
+        "testing/ARTIFACT_COVERAGE_AUDIT.md",
+        "testing/task1/logs/TC01_replay1.log",
+        "testing/task3/evidence/native_design_report/generation.log",
+        "testing/task4/reports/qa/video_frames/final_run3.png",
     ):
         assert prefix + relative in names
     assert sum(name.endswith(".osi") for name in names) >= 20
     assert not any(name.lower().endswith((".mp4", ".mov", ".m4v")) for name in names)
     assert not any("resume" in name.lower() or name.lower().endswith("/cv.pdf") for name in names)
+    assert ZIP_PATH.stat().st_size < 100 * 1024 * 1024
 
 print("Tasks 1-5 final submission validation PASS")
 print(f"Records: {len(rows)} ({dict(verdicts)})")
 print(f"Atomic checks: {audit['checks_total']} ({audit['pass']} pass, {audit['fail']} fail)")
 print(f"PDF: {len(reader.pages)} pages, {len(uris)} link annotations")
+print(f"Screenshot appendix: {len(appendix_reader.pages)} pages")
 print(f"OSI files: {len(osi_files)}")
 print(f"ZIP entries: {len(names)}")
 print(f"Fresh video session: {video_session['session_id']} ({len(video_session['runs'])} runs)")
