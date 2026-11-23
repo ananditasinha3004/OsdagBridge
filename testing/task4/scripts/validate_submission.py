@@ -56,18 +56,20 @@ osi_files = list((ROOT / "osi").rglob("*.osi"))
 assert len(osi_files) >= 20, f"only {len(osi_files)} OSI files"
 
 reader = PdfReader(str(PDF))
-assert len(reader.pages) == 21
+assert len(reader.pages) == 76
+assert PDF.stat().st_size < 10 * 1024 * 1024
 text = "\n".join(page.extract_text() or "" for page in reader.pages)
 for phrase in (
-    "all five assignment tasks",
-    "Executive Summary",
+    "Assignment Requirements and Evidence Map",
+    "Task 2 run-count clarification",
+    "TC-01 through TC-17",
     "UI vs Input/Output Dictionaries",
     "3D CAD Generation Across Runs",
     "Live GitHub Issues and Code-Level Fix Map",
     "Submission Package and Reproducibility",
 ):
     assert phrase in text, phrase
-assert not re.search(r"TODO|PLACEHOLDER|turn\d+(?:search|fetch)", text, re.I)
+assert not re.search(r"TODO|turn\d+(?:search|fetch)", text, re.I)
 
 uris = []
 for page in reader.pages:

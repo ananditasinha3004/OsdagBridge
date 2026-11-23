@@ -66,6 +66,7 @@ and Poppler:
 ```sh
 python scripts/build_master_log.py
 python scripts/build_report.py
+python scripts/compile_full_report.py
 python scripts/build_submission.py
 python scripts/validate_submission.py
 ```

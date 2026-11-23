@@ -29,7 +29,7 @@ from PIL import Image as PILImage
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "reports/OsdagBridge_Tasks_1_to_5_Comprehensive_Testing_Report.pdf"
+OUT = ROOT / "reports/Tasks4_5_Detailed_Testing_and_Issue_Report.pdf"
 EVIDENCE = ROOT / "evidence"
 PAGE_W, PAGE_H = landscape(A4)
 REPO = "https://github.com/ananditasinha3004/OsdagBridge/tree/dev"
@@ -471,7 +471,7 @@ story += [
         ["Live issues", "Upstream #43/#71/#113/#171/#172/#257/#267", "Deduplicated links and code-level fix map in Section 15"],
     ], [50*mm, 145*mm, 67*mm], font=7.3),
     p("Rebuild", "H2"),
-    p("Run python testing/task4/scripts/build_master_log.py, then python testing/task4/scripts/build_report.py, then python testing/task4/scripts/build_submission.py. validate_submission.py checks record counts, required files, PDF readability, OSI presence, issue links, video exclusion, ZIP integrity, and SHA-256 manifest consistency."),
+    p("Run python testing/task4/scripts/build_master_log.py, then python testing/task4/scripts/build_report.py, python testing/task4/scripts/compile_full_report.py, and python testing/task4/scripts/build_submission.py. validate_submission.py checks record counts, required files, PDF readability, OSI presence, issue links, video exclusion, ZIP integrity, and SHA-256 manifest consistency."),
     p("Final assessment", "H2"),
     p("Tasks 1-5 are consolidated and traceable to preserved evidence and live upstream reports. The same-session workflow and graphical regeneration are stable for the tested sequence. The report should not be interpreted as validation of all engineering calculations until the linked defects - especially #113 and #257 - are corrected and regression-tested.", "Callout"),
 ]
