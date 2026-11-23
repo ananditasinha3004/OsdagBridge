@@ -30,19 +30,16 @@ FAIL results.
 - ZIP package: `dist/OsdagBridge_Task5_Submission.zip`
 - Test inputs: `osi/task1/` and `osi/multirun/`
 - Reproducible scripts: `scripts/`
-- Fresh Task 4 demonstration: `video/Task4_Testing_Demonstration.mp4`
-  (128.70 s, 1920 x 1200, H.264; session `TASK4-FRESH-VIDEO-01`)
+- Video demonstration: retained outside the repository for later YouTube
+  publication.
 - Fresh recording evidence: `evidence/session_video_task4_fresh_02/`
   (custom material plus three consecutive same-process runs, plots, and 3D CAD)
 
 Repository branch:
-https://github.com/ananditasinha3004/OsdagBridge/tree/codex/task4-test-case-documentation
+https://github.com/ananditasinha3004/OsdagBridge/tree/dev
 
 Repository access: `Nidhikhare12` was verified as a direct collaborator in
 GitHub repository settings on 23 November 2026 (IST).
-
-Video:
-https://github.com/ananditasinha3004/OsdagBridge/blob/codex/task4-test-case-documentation/testing/task4/video/Task4_Testing_Demonstration.mp4
 
 ## Live bug reports
 
@@ -75,5 +72,5 @@ python scripts/validate_submission.py
 
 The report was rendered page-by-page with Poppler and visually reviewed. The
 validator checks record counts, required fields, PDF readability and links,
-MP4 signature, OSI presence, archive integrity, and the SHA-256 manifest.
+OSI presence, archive integrity, exclusion of videos, and the SHA-256 manifest.
 

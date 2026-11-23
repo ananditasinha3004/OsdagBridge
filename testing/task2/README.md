@@ -27,10 +27,8 @@ tracked upstream as https://github.com/Nidhikhare12/OsdagBridge/issues/113.
 - `test_log.csv`: compact case index.
 - `notes/multirun_findings.md`: detailed technical findings and issue map.
 - `reports/Task2_MultiRun_State_Persistence_Report.pdf`: final report.
-- `video/Task2_MultiRun_Demonstration.mp4`: 114.85 s silent screencast showing
-  the custom material dialog, three consecutive same-session designs, regenerated
-  structural plots, and regenerated 3D CAD. Public playback/download:
-  https://github.com/ananditasinha3004/OsdagBridge/blob/codex/final-submission/testing/task2/video/Task2_MultiRun_Demonstration.mp4
+- Video demonstration: retained outside the repository for later YouTube
+  publication.
 
 ## Re-run
 

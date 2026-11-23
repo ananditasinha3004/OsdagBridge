@@ -32,8 +32,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "reports/Task5_Comprehensive_Testing_and_Code_Level_Report.pdf"
 EVIDENCE = ROOT / "evidence"
 PAGE_W, PAGE_H = landscape(A4)
-REPO = "https://github.com/ananditasinha3004/OsdagBridge/tree/codex/task4-test-case-documentation"
-VIDEO = "https://github.com/ananditasinha3004/OsdagBridge/blob/codex/task4-test-case-documentation/testing/task4/video/Task4_Testing_Demonstration.mp4"
+REPO = "https://github.com/ananditasinha3004/OsdagBridge/tree/dev"
 
 DARK = colors.HexColor("#17324D")
 TEAL = colors.HexColor("#007C83")
@@ -214,14 +213,13 @@ story += [
         ["Atomic output checks", "50 PASS / 9 FAIL", "UI/Input/Output/workbook/component/CAD/plot comparisons retained in CSV and JSON"],
         ["Completed solver designs", "20", "17 independent Task 1 designs plus 3 consecutive same-session designs"],
         ["Critical reproduced defect", "4 input/CAD girders vs 6 design girders", "Upstream #113; calculation demand can be distributed across deck-edge lines"],
-        ["Artifacts", "PDF + CSV/JSON + ZIP + MP4 + OSI", "All are included under testing/task4 on the submission branch"],
+        ["Artifacts", "PDF + CSV/JSON + ZIP + OSI", "All are included under testing/task4 on the dev branch"],
     ], [55*mm, 68*mm, 139*mm], font=8.1),
     Spacer(1, 5),
     p("Overall conclusion", "H2"),
     p("The tested lifecycle is stable for the three-run sequence: unlock cleared prior output and plot state, the application remained responsive, and UI/input/output/CAD/plot artifacts refreshed. Output correctness is not fully reliable: user values can silently revert on Save, several exports contain incorrect component values or units, end-diaphragm results are empty, transverse design checks are absent from the workbook, and the positive-overhang grillage is designed as six girders instead of four.", "Fail"),
-    p("Repository and video", "H2"),
+    p("Repository", "H2"),
     link(REPO, REPO),
-    link(VIDEO, VIDEO),
 ]
 
 story += [PageBreak(), p("2. Scope, Environment, and Evidence Rules", "Title")]
@@ -469,11 +467,11 @@ story += [
         ["Master log", "testing/task4/test_log.csv and test_log.json", "36 unique records; required fields non-empty"],
         ["Atomic output audit", "testing/task4/data/task3/output_verification.csv/json", "59 checks: 50 PASS, 9 FAIL"],
         ["Test inputs", "testing/task4/osi/task1 and osi/multirun", "All authoritative Task 1 and multi-run OSI files"],
-        ["Video", link(VIDEO, VIDEO), "Fresh 128.70 s Task 4 capture: custom material + three same-process runs + plots + CAD"],
+        ["Video", "External delivery", "To be published separately on YouTube; not stored in the repository or ZIP"],
         ["Live issues", "Upstream #43/#71/#113/#171/#172/#257/#267", "Deduplicated links and code-level fix map in Section 15"],
     ], [50*mm, 145*mm, 67*mm], font=7.3),
     p("Rebuild", "H2"),
-    p("Run python testing/task4/scripts/build_master_log.py, then python testing/task4/scripts/build_report.py, then python testing/task4/scripts/build_submission.py. validate_submission.py checks record counts, required files, PDF readability, MP4 signature, OSI presence, issue links, ZIP integrity, and SHA-256 manifest consistency."),
+    p("Run python testing/task4/scripts/build_master_log.py, then python testing/task4/scripts/build_report.py, then python testing/task4/scripts/build_submission.py. validate_submission.py checks record counts, required files, PDF readability, OSI presence, issue links, video exclusion, ZIP integrity, and SHA-256 manifest consistency."),
     p("Final assessment", "H2"),
     p("Task 5 is complete and traceable to preserved evidence and live upstream reports. The same-session workflow and graphical regeneration are stable for the tested sequence. The report should not be interpreted as validation of all engineering calculations until the linked defects - especially #113 and #257 - are corrected and regression-tested.", "Callout"),
 ]

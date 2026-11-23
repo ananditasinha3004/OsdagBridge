@@ -19,7 +19,6 @@ PDF = ROOT / "reports/Task5_Comprehensive_Testing_and_Code_Level_Report.pdf"
 ZIP_PATH = ROOT / "dist/OsdagBridge_Task5_Submission.zip"
 MANIFEST = ROOT / "MANIFEST_SHA256.txt"
 VIDEO_SESSION = ROOT / "evidence/session_video_task4_fresh_02/session.json"
-REUSED_TASK2_VIDEO_SHA256 = "366b8564cdd80242179ff72d6f8d7a61b4b24ee80fd6aeb1bcbb23eea00ebde2"
 
 required = [
     ROOT / "README.md",
@@ -28,7 +27,6 @@ required = [
     ROOT / "notes/findings_and_issue_map.md",
     ROOT / "data/task3/output_verification.csv",
     ROOT / "data/task3/output_verification.json",
-    ROOT / "video/Task4_Testing_Demonstration.mp4",
     VIDEO_SESSION,
     PDF,
     ZIP_PATH,
@@ -79,12 +77,6 @@ for page in reader.pages:
 for issue in ("issues/43", "issues/71", "issues/113", "issues/171", "issues/172", "issues/257", "issues/267"):
     assert any(issue in uri for uri in uris), issue
 
-video = ROOT / "video/Task4_Testing_Demonstration.mp4"
-head = video.read_bytes()[:32]
-assert b"ftyp" in head and video.stat().st_size > 1_000_000
-video_sha256 = hashlib.sha256(video.read_bytes()).hexdigest()
-assert video_sha256 != REUSED_TASK2_VIDEO_SHA256, "Task 2 screencast was reused"
-
 video_session = json.loads(VIDEO_SESSION.read_text())
 assert video_session["session_id"] == "TASK4-FRESH-VIDEO-01"
 assert video_session["status"] == "execution_completed"
@@ -112,11 +104,11 @@ with zipfile.ZipFile(ZIP_PATH) as archive:
         "README.md",
         "test_log.csv",
         "reports/Task5_Comprehensive_Testing_and_Code_Level_Report.pdf",
-        "video/Task4_Testing_Demonstration.mp4",
         "MANIFEST_SHA256.txt",
     ):
         assert prefix + relative in names
     assert sum(name.endswith(".osi") for name in names) >= 20
+    assert not any(name.lower().endswith((".mp4", ".mov", ".m4v")) for name in names)
 
 print("Task 5 validation PASS")
 print(f"Records: {len(rows)} ({dict(verdicts)})")

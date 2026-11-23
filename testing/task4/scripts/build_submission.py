@@ -12,11 +12,6 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "MANIFEST_SHA256.txt"
 ZIP_PATH = ROOT / "dist/OsdagBridge_Task5_Submission.zip"
 ARCHIVE_ROOT = "OsdagBridge_Task5_Submission"
-EXCLUDED_VIDEO_WORK_FILES = {
-    "Task4_Testing_Demonstration_fresh.m4v",
-    "Task4_Testing_Demonstration_fresh_raw.mov",
-    "Task4_Testing_Demonstration_new.mp4",
-}
 EXCLUDED_SUPERSEDED_REPORTS = {
     "Task4_Comprehensive_Test_Case_Documentation.pdf",
 }
@@ -37,7 +32,7 @@ def included_files():
             continue
         if relative.parts[:2] == ("evidence", "session_video_task4_fresh"):
             continue
-        if relative.parts[0] == "video" and relative.name in EXCLUDED_VIDEO_WORK_FILES:
+        if relative.parts[0] == "video":
             continue
         yield path
 

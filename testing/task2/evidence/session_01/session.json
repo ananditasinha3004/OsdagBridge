@@ -38,6 +38,6 @@
     "material.girder.thermal": "11.7"
   },
   "status": "incomplete",
-  "error": "Traceback (most recent call last):\n  File \"/Users/ananditasinha/Documents/ChatGPT/osdag_bridge/task2/scripts/run_multirun_session.py\", line 211, in main\n    run[\"ui_before_design\"] = ui_values()\n                              ^^^^^^^^^^^\n  File \"/Users/ananditasinha/Documents/ChatGPT/osdag_bridge/task2/scripts/run_multirun_session.py\", line 133, in ui_values\n    return {key: value_of(field(key)) for key in UI_KEYS}\n                          ^^^^^^^^^^\n  File \"/Users/ananditasinha/Documents/ChatGPT/osdag_bridge/task2/scripts/run_multirun_session.py\", line 105, in field\n    raise AssertionError(f\"Widget not found: {key}\")\nAssertionError: Widget not found: geometry.number_of_girders\n",
+  "error": "Traceback (most recent call last):\n  File \"/path/to/osdag_bridge/task2/scripts/run_multirun_session.py\", line 211, in main\n    run[\"ui_before_design\"] = ui_values()\n                              ^^^^^^^^^^^\n  File \"/path/to/osdag_bridge/task2/scripts/run_multirun_session.py\", line 133, in ui_values\n    return {key: value_of(field(key)) for key in UI_KEYS}\n                          ^^^^^^^^^^\n  File \"/path/to/osdag_bridge/task2/scripts/run_multirun_session.py\", line 105, in field\n    raise AssertionError(f\"Widget not found: {key}\")\nAssertionError: Widget not found: geometry.number_of_girders\n",
   "finished_at": "2026-11-22T20:38:02.073763+05:30"
 }

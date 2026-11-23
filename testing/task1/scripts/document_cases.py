@@ -9,7 +9,7 @@ from reportlab.lib.pagesizes import A4
 from PIL import Image as PILImage
 
 root=Path(__file__).resolve().parents[1]
-planning=Path('/Users/ananditasinha/Documents/ChatGPT/osdag_bridge/planning')
+planning=root.parents[1]/'planning'
 records=json.loads((root/'results/TC03_TC17_review.json').read_text())
 assert len(records)==15 and all(r['status']=='execution_completed' for r in records)
 commit='d74f56dd7f22925fb8148cabf5740ed8d1e39ff3'

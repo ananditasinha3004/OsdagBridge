@@ -28,7 +28,7 @@ def main() -> int:
             subtitle="Task 3",
             job_number="T3-NATIVE-01",
             report_date="2026-11-23",
-            reviewer="Codex assisted verification",
+            reviewer="Independent verification",
         ),
         options=ReportOptions(
             sections=["loads", "analysis", "design_checks", "drawings"],

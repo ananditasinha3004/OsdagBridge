@@ -126,7 +126,9 @@ for row in testrows:
  if extra not in row['notes']:row['notes']+=' '+extra
 with testlog.open('w',newline='') as f:
  w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(testrows)
-shutil.copy2(testlog,Path('/Users/ananditasinha/Documents/ChatGPT/osdag_bridge/planning/test_log.csv'))
+planning_dir=root.parents[1]/'planning'
+planning_dir.mkdir(parents=True,exist_ok=True)
+shutil.copy2(testlog,planning_dir/'test_log.csv')
 write(root/'PACKAGE_AUDIT.json',json.dumps({'checked_at':stamp,'cases':17,'top_level_osi_cases':17,'individual_test_reports':17,'case_run_folders':17,'screenshot_case_groups':17,'runtime_log_cases':17,'original_runtime_log_missing':['TC01'],'TC01_replay_started_at':meta['started_at'],'TC01_replay_status':meta['status'],'note':'Every indexed path and every archived file hash is verified by repair_package.py. TC01 log is from a separate replay, not its original manual run.'},indent=2))
 write(root/'PACKAGE_README.txt','''CORRECTED TASK 1 PACKAGE, VERSION 2
 

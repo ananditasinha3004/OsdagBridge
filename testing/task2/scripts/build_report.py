@@ -30,8 +30,8 @@ from reportlab.platypus import (
 
 ROOT = Path(__file__).resolve().parents[2]
 EVIDENCE = ROOT / "task2/evidence/session_02"
-OUT = ROOT / "output/pdf/Task2_MultiRun_State_Persistence_Report.pdf"
-REPO_URL = "https://github.com/ananditasinha3004/OsdagBridge/tree/codex/task2-multirun-testing"
+OUT = ROOT / "task2/reports/Task2_MultiRun_State_Persistence_Report.pdf"
+REPO_URL = "https://github.com/ananditasinha3004/OsdagBridge/tree/dev"
 ISSUES = {
     43: "Custom bracing/diaphragm grades stored but unused",
     71: "Save Input overwrites additional-input values",
@@ -350,9 +350,8 @@ story += [table([
     ["ZIP bundle", "task2/dist/OsdagBridge_Task2_Submission.zip"],
     ["Automation and logs", "task2/scripts and task2/evidence/session_02"],
     ["Test-case OSI files", "run_1/TASK2_run_1.osi through run_3/TASK2_run_3.osi"],
-    ["Resume", "task2/resume/Anandita_Sinha_Resume_v2.pdf (existing supplied file)"],
-    ["Video demonstration", p('<link href="https://github.com/ananditasinha3004/OsdagBridge/blob/codex/task2-multirun-testing/testing/task2/video/Task2_MultiRun_Demonstration.mp4">Public GitHub video (114.85 s, 1920 x 1200, silent)</link>', "Link")],
-], [60*mm, 201*mm], font=8.3), p("Video verification", "H2"), p("The authentic screen capture shows: (1) the custom material dialog and non-default Fy 360 MPa, Fu 510 MPa, E 205 GPa values, (2) Design, unlock, edit, and Design for three consecutive runs without restarting the application, (3) a regenerated structural shear plot after completed runs, and (4) the regenerated 3D CAD, ending on the 35 m / -5 degree model. The final MP4 was visually sampled at seven timestamps and contains only OsdagBridge during the captured interval."), p("Conclusion", "H2"), p("The Task 2 same-session sequence is reproducible and evidence-backed. State clearing and regeneration worked for the tested geometry/material-retention sequence, but the independent reproduction of #113 prevents treating the resulting engineering outputs as fully trustworthy until the deck-edge/girder mapping is corrected and regression-tested.", "Callout")]
+    ["Video demonstration", "To be published separately on YouTube; not stored in the repository or ZIP package"],
+], [60*mm, 201*mm], font=8.3), p("Conclusion", "H2"), p("The Task 2 same-session sequence is reproducible and evidence-backed. State clearing and regeneration worked for the tested geometry/material-retention sequence, but the independent reproduction of #113 prevents treating the resulting engineering outputs as fully trustworthy until the deck-edge/girder mapping is corrected and regression-tested.", "Callout")]
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
 doc.build(story)
