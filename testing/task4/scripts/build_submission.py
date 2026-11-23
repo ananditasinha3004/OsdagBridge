@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create the Task 4 SHA-256 manifest and submission ZIP."""
+"""Create the Task 5 SHA-256 manifest and submission ZIP."""
 
 from __future__ import annotations
 
@@ -10,12 +10,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "MANIFEST_SHA256.txt"
-ZIP_PATH = ROOT / "dist/OsdagBridge_Task4_Submission.zip"
-ARCHIVE_ROOT = "OsdagBridge_Task4_Submission"
+ZIP_PATH = ROOT / "dist/OsdagBridge_Task5_Submission.zip"
+ARCHIVE_ROOT = "OsdagBridge_Task5_Submission"
 EXCLUDED_VIDEO_WORK_FILES = {
     "Task4_Testing_Demonstration_fresh.m4v",
     "Task4_Testing_Demonstration_fresh_raw.mov",
     "Task4_Testing_Demonstration_new.mp4",
+}
+EXCLUDED_SUPERSEDED_REPORTS = {
+    "Task4_Comprehensive_Test_Case_Documentation.pdf",
 }
 
 
@@ -29,6 +32,8 @@ def included_files():
         if relative.parts[0] == "dist":
             continue
         if relative.parts[:2] == ("reports", "qa"):
+            continue
+        if relative.parts[0] == "reports" and relative.name in EXCLUDED_SUPERSEDED_REPORTS:
             continue
         if relative.parts[:2] == ("evidence", "session_video_task4_fresh"):
             continue

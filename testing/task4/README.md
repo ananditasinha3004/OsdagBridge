@@ -1,4 +1,4 @@
-# OsdagBridge Task 4 - Comprehensive Test-Case Documentation
+# OsdagBridge Task 5 - GitHub Issue Creation and Code-Level Reporting
 
 Tested against `Nidhikhare12/OsdagBridge` branch `dev`, commit
 `d74f56dd7f22925fb8148cabf5740ed8d1e39ff3`.
@@ -24,10 +24,10 @@ FAIL results.
 ## Deliverables
 
 - Comprehensive PDF:
-  `reports/Task4_Comprehensive_Test_Case_Documentation.pdf`
+  `reports/Task5_Comprehensive_Testing_and_Code_Level_Report.pdf`
 - Master logs: `test_log.csv` and `test_log.json`
 - Atomic output audit: `data/task3/output_verification.csv` and `.json`
-- ZIP package: `dist/OsdagBridge_Task4_Submission.zip`
+- ZIP package: `dist/OsdagBridge_Task5_Submission.zip`
 - Test inputs: `osi/task1/` and `osi/multirun/`
 - Reproducible scripts: `scripts/`
 - Fresh Task 4 demonstration: `video/Task4_Testing_Demonstration.mp4`
@@ -51,12 +51,15 @@ https://github.com/ananditasinha3004/OsdagBridge/blob/codex/task4-test-case-docu
 - https://github.com/Nidhikhare12/OsdagBridge/issues/171
 - https://github.com/Nidhikhare12/OsdagBridge/issues/113
 - https://github.com/Nidhikhare12/OsdagBridge/issues/172
-- https://github.com/ananditasinha3004/OsdagBridge/issues/1
-- https://github.com/ananditasinha3004/OsdagBridge/issues/2
+- https://github.com/Nidhikhare12/OsdagBridge/issues/257
+- https://github.com/Nidhikhare12/OsdagBridge/issues/267
 
-Each issue is mapped to reproduced evidence, affected files, and a suggested
-code-level correction in `notes/findings_and_issue_map.md` and Section 15 of
-the PDF.
+Issue #267 was created after an open-and-closed duplicate search. The skew=0
+end-diaphragm evidence was added to existing issue #257 rather than duplicated.
+Evidence-backed comments were also added to #71, #43, #171, and #172; the
+same-session reproduction was already posted to #113. Each issue is mapped to
+reproduced evidence, affected files, and a suggested code-level correction in
+`notes/findings_and_issue_map.md` and Section 15 of the PDF.
 
 ## Rebuild and validation
 

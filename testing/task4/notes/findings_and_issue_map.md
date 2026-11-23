@@ -1,9 +1,10 @@
-# Task 4 findings and live issue map
+# Task 5 findings and live upstream issue map
 
 All observations below were made at `dev` commit
 `d74f56dd7f22925fb8148cabf5740ed8d1e39ff3`. Existing upstream issues are
-linked instead of duplicated. Two distinct Task 3 export/coverage findings
-were published on the fork.
+linked instead of duplicated. The distinct girder-dimension export defect was
+published upstream as #267. The empty diaphragm result matched upstream #257,
+so new evidence was added there instead of opening a duplicate.
 
 ## F01 - User-controlled additional inputs revert during Save
 
@@ -83,7 +84,7 @@ Suggested fix: in
 canonical `design_results` `*_mm` fields or convert normalized SI values back
 to millimetres before export. Add an exact workbook regression.
 
-Live report: https://github.com/ananditasinha3004/OsdagBridge/issues/1
+Live report: https://github.com/Nidhikhare12/OsdagBridge/issues/267
 
 ## F06 - Empty end-diaphragm results and missing transverse checks
 
@@ -92,12 +93,13 @@ non-empty diaphragm design results. The workbook exports cross-bracing and
 end-diaphragm section-property sheets without demand, capacity, utilization,
 or status sheets.
 
-Suggested fix: normalize node identifiers in `_design_end_diaphragm_members`,
-assert every configured pair maps to start/end elements, treat zero design
-jobs as an error, and add workbook/report result resolvers for both transverse
-systems.
+Root cause confirmed by upstream #257: the skew=0 support-line members are
+read only through global `Vz_i`, which is zero for the orthogonal bridge, so
+no design jobs are queued. Extract forces in local member axes (or resolve the
+relevant global components), assert every configured pair maps correctly,
+treat zero jobs as an error, and add workbook/report result resolvers.
 
-Live report: https://github.com/ananditasinha3004/OsdagBridge/issues/2
+Live report: https://github.com/Nidhikhare12/OsdagBridge/issues/257
 
 ## F07 - Native LaTeX report does not produce a portable PDF
 

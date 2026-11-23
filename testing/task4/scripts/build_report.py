@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the comprehensive Task 4 test-case documentation report."""
+"""Generate the comprehensive Task 5 testing and code-level report."""
 
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ from PIL import Image as PILImage
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "reports/Task4_Comprehensive_Test_Case_Documentation.pdf"
+OUT = ROOT / "reports/Task5_Comprehensive_Testing_and_Code_Level_Report.pdf"
 EVIDENCE = ROOT / "evidence"
 PAGE_W, PAGE_H = landscape(A4)
 REPO = "https://github.com/ananditasinha3004/OsdagBridge/tree/codex/task4-test-case-documentation"
@@ -137,7 +137,7 @@ def header_footer(canvas, doc):
     canvas.rect(0, PAGE_H - 12 * mm, PAGE_W, 12 * mm, fill=1, stroke=0)
     canvas.setFillColor(colors.white)
     canvas.setFont("Helvetica-Bold", 8.2)
-    canvas.drawString(14 * mm, PAGE_H - 8 * mm, "OsdagBridge Task 4 | Comprehensive Test-Case Documentation")
+    canvas.drawString(14 * mm, PAGE_H - 8 * mm, "OsdagBridge Task 5 | Comprehensive Testing and Code-Level Reporting")
     canvas.setFillColor(MID)
     canvas.setFont("Helvetica", 7.5)
     canvas.drawString(14 * mm, 7.5 * mm, "Prepared 23 Nov 2026 IST | dev @ d74f56d | Evidence-backed, no source patch applied")
@@ -160,7 +160,7 @@ def cover(canvas, doc):
     canvas.drawString(36 * mm, PAGE_H - 67 * mm, "TEST-CASE DOCUMENTATION")
     canvas.setFillColor(colors.HexColor("#AFE7E9"))
     canvas.setFont("Helvetica", 14)
-    canvas.drawString(36 * mm, PAGE_H - 84 * mm, "OsdagBridge plate-girder desktop application | Task 4")
+    canvas.drawString(36 * mm, PAGE_H - 84 * mm, "OsdagBridge plate-girder desktop application | Task 5")
     canvas.setFillColor(colors.white)
     canvas.setFont("Helvetica-Bold", 11)
     canvas.drawString(36 * mm, PAGE_H - 111 * mm, "Submission scope")
@@ -197,7 +197,7 @@ doc = BaseDocTemplate(
     rightMargin=14 * mm,
     topMargin=17 * mm,
     bottomMargin=15 * mm,
-    title="OsdagBridge Task 4 Comprehensive Test-Case Documentation",
+    title="OsdagBridge Task 5 Comprehensive Testing and Code-Level Report",
     author="Anandita Sinha",
 )
 doc.addPageTemplates([PageTemplate(id="all", frames=[Frame(14 * mm, 15 * mm, PAGE_W - 28 * mm, PAGE_H - 32 * mm)], onPage=on_page)])
@@ -206,7 +206,7 @@ story = [Spacer(1, 1), PageBreak()]
 
 story += [
     p("1. Executive Summary", "Title"),
-    p("This report consolidates every authoritative test/check record executed across Tasks 1-3 into one Task 4 index. It records exact parameter combinations, expected and actual results, pass/fail classification, evidence paths, and live issue links. A completed application run is kept separate from an engineering design PASS: several scenarios executed normally while code-check results failed, which is a valid engineering outcome rather than a software crash."),
+    p("This Task 5 report consolidates every authoritative test/check record executed across Tasks 1-3, the duplicate audit, and the final upstream issue submissions. It records exact parameter combinations, expected and actual results, pass/fail classification, evidence paths, and live code-level issue links. A completed application run is kept separate from an engineering design PASS: several scenarios executed normally while code-check results failed, which is a valid engineering outcome rather than a software crash."),
     report_table([
         ["Measure", "Result", "Interpretation"],
         ["Master records", "36", "17 standalone parameter cases + 6 multi-run/state checks + 13 output-verification records"],
@@ -434,14 +434,14 @@ issue_rows = [
     [link("Upstream #43", "https://github.com/Nidhikhare12/OsdagBridge/issues/43"), "TC-14/15 steel rows repeat wrong numeric properties", "generate_results_values_builder.py: resolve each component's material object independently"],
     [link("Upstream #171", "https://github.com/Nidhikhare12/OsdagBridge/issues/171"), "TC-17/T3: Ecm and modular ratio unit mismatch", "Convert GPa to MPa before display and Es/Ecm; export selected density"],
     [link("Upstream #113", "https://github.com/Nidhikhare12/OsdagBridge/issues/113"), "T2/T3: 4 structural girders designed as 6", "plategirderbridge.py + designer.py: slab-strip edges, edge_dist, real girder count"],
-    [link("Fork #1", "https://github.com/ananditasinha3004/OsdagBridge/issues/1"), "T3: 1.39/0.42/0.02 exported under mm labels", "generate_results_values_builder.py: use *_mm values or convert SI dimensions before export"],
-    [link("Fork #2", "https://github.com/ananditasinha3004/OsdagBridge/issues/2"), "T3: empty diaphragm results; no transverse checks", "Normalize node IDs; assert pair mapping/jobs; add workbook/report resolvers"],
+    [link("Upstream #267", "https://github.com/Nidhikhare12/OsdagBridge/issues/267"), "T3: 1.39/0.42/0.02 exported under mm labels", "generate_results_values_builder.py: use *_mm values or convert SI dimensions before export"],
+    [link("Upstream #257", "https://github.com/Nidhikhare12/OsdagBridge/issues/257"), "T3: skew=0 gives empty diaphragm results; no transverse checks", "Extract local-axis diaphragm forces; warn/error on zero jobs; add workbook/report resolvers"],
     [link("Upstream #172", "https://github.com/Nidhikhare12/OsdagBridge/issues/172"), "T3: native report TeX did not yield portable PDF", "chap2.py-chap5.py: terminate longtable captions correctly; copy assets into report bundle"],
 ]
 story += [
     report_table(issue_rows, [45*mm, 85*mm, 132*mm], font=6.8),
     p("Duplicate policy", "H2"),
-    p("Existing upstream reports are linked where trigger and code path match. New fork issues were created only for the distinct girder-dimension export and fresh-baseline diaphragm/transverse-export findings. The report does not create duplicate tickets for #71, #43, #171, #113, or #172."),
+    p("Open and closed upstream issues were searched before posting. The distinct girder-dimension export defect was filed as new upstream issue #267. The fresh skew=0 empty-diaphragm evidence was added to existing upstream #257 instead of creating a duplicate. Additional evidence was added to #71, #43, #171, and #172; the three-run girder-count reproduction was already posted to #113."),
 ]
 
 task2_3 = [r for r in master if r["phase"] != "Task 1"]
@@ -462,20 +462,20 @@ story += [PageBreak(), p("17. Submission Package and Reproducibility", "Title")]
 story += [
     report_table([
         ["Deliverable", "Location / link", "Verification"],
-        ["GitHub repository", link(REPO, REPO), "Public branch includes Tasks 1-4"],
+        ["GitHub repository", link(REPO, REPO), "Public branch includes test logs, scripts, documentation, Task 5 report, and ZIP"],
         ["Collaborator access", "Nidhikhare12", "Verified as a direct repository collaborator on 23 Nov 2026 IST"],
-        ["PDF report", "testing/task4/reports/Task4_Comprehensive_Test_Case_Documentation.pdf", "Rendered to PNG; page count/text/link checks"],
-        ["ZIP package", "testing/task4/dist/OsdagBridge_Task4_Submission.zip", "Manifest and archive test included"],
+        ["PDF report", "testing/task4/reports/Task5_Comprehensive_Testing_and_Code_Level_Report.pdf", "Rendered to PNG; page count/text/link checks"],
+        ["ZIP package", "testing/task4/dist/OsdagBridge_Task5_Submission.zip", "Manifest and archive test included"],
         ["Master log", "testing/task4/test_log.csv and test_log.json", "36 unique records; required fields non-empty"],
         ["Atomic output audit", "testing/task4/data/task3/output_verification.csv/json", "59 checks: 50 PASS, 9 FAIL"],
         ["Test inputs", "testing/task4/osi/task1 and osi/multirun", "All authoritative Task 1 and multi-run OSI files"],
         ["Video", link(VIDEO, VIDEO), "Fresh 128.70 s Task 4 capture: custom material + three same-process runs + plots + CAD"],
-        ["Live issues", "Fork #1/#2 plus upstream #43/#71/#113/#171/#172", "Links and code-level fix map in Section 15"],
+        ["Live issues", "Upstream #43/#71/#113/#171/#172/#257/#267", "Deduplicated links and code-level fix map in Section 15"],
     ], [50*mm, 145*mm, 67*mm], font=7.3),
     p("Rebuild", "H2"),
     p("Run python testing/task4/scripts/build_master_log.py, then python testing/task4/scripts/build_report.py, then python testing/task4/scripts/build_submission.py. validate_submission.py checks record counts, required files, PDF readability, MP4 signature, OSI presence, issue links, ZIP integrity, and SHA-256 manifest consistency."),
     p("Final assessment", "H2"),
-    p("Task 4 documentation is complete and traceable to preserved evidence. The same-session workflow and graphical regeneration are stable for the tested sequence. The report should not be interpreted as validation of all engineering calculations until the linked defects - especially #113 - are corrected and regression-tested.", "Callout"),
+    p("Task 5 is complete and traceable to preserved evidence and live upstream reports. The same-session workflow and graphical regeneration are stable for the tested sequence. The report should not be interpreted as validation of all engineering calculations until the linked defects - especially #113 and #257 - are corrected and regression-tested.", "Callout"),
 ]
 
 OUT.parent.mkdir(parents=True, exist_ok=True)

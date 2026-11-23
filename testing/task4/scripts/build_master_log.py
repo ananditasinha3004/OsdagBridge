@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Task 4 master test-case log from the Task 1-3 source logs."""
+"""Build the Task 5 master test-case log from the Task 1-3 source logs."""
 
 from __future__ import annotations
 
@@ -39,9 +39,9 @@ ISSUES = {
     "TC-15": "https://github.com/Nidhikhare12/OsdagBridge/issues/43",
     "TC-17": "https://github.com/Nidhikhare12/OsdagBridge/issues/171",
     "T3-XLS-02": "https://github.com/Nidhikhare12/OsdagBridge/issues/171",
-    "T3-XLS-03": "https://github.com/ananditasinha3004/OsdagBridge/issues/1",
-    "T3-COMP-01": "https://github.com/ananditasinha3004/OsdagBridge/issues/2",
-    "T3-COMP-02": "https://github.com/ananditasinha3004/OsdagBridge/issues/2",
+    "T3-XLS-03": "https://github.com/Nidhikhare12/OsdagBridge/issues/267",
+    "T3-COMP-01": "https://github.com/Nidhikhare12/OsdagBridge/issues/257",
+    "T3-COMP-02": "https://github.com/Nidhikhare12/OsdagBridge/issues/257",
     "T3-REPORT-01": "https://github.com/Nidhikhare12/OsdagBridge/issues/172",
 }
 

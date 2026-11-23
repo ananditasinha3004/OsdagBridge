@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the Task 4 report, logs, evidence, manifest, and ZIP."""
+"""Validate the Task 5 report, logs, evidence, manifest, and ZIP."""
 
 from __future__ import annotations
 
@@ -15,8 +15,8 @@ from pypdf import PdfReader
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF = ROOT / "reports/Task4_Comprehensive_Test_Case_Documentation.pdf"
-ZIP_PATH = ROOT / "dist/OsdagBridge_Task4_Submission.zip"
+PDF = ROOT / "reports/Task5_Comprehensive_Testing_and_Code_Level_Report.pdf"
+ZIP_PATH = ROOT / "dist/OsdagBridge_Task5_Submission.zip"
 MANIFEST = ROOT / "MANIFEST_SHA256.txt"
 VIDEO_SESSION = ROOT / "evidence/session_video_task4_fresh_02/session.json"
 REUSED_TASK2_VIDEO_SHA256 = "366b8564cdd80242179ff72d6f8d7a61b4b24ee80fd6aeb1bcbb23eea00ebde2"
@@ -76,7 +76,7 @@ for page in reader.pages:
         action = annot.get("/A")
         if action and action.get("/URI"):
             uris.append(str(action.get("/URI")))
-for issue in ("issues/1", "issues/2", "issues/43", "issues/71", "issues/113", "issues/171", "issues/172"):
+for issue in ("issues/43", "issues/71", "issues/113", "issues/171", "issues/172", "issues/257", "issues/267"):
     assert any(issue in uri for uri in uris), issue
 
 video = ROOT / "video/Task4_Testing_Demonstration.mp4"
@@ -107,18 +107,18 @@ for relative, expected in manifest_entries.items():
 with zipfile.ZipFile(ZIP_PATH) as archive:
     assert archive.testzip() is None
     names = set(archive.namelist())
-    prefix = "OsdagBridge_Task4_Submission/"
+    prefix = "OsdagBridge_Task5_Submission/"
     for relative in (
         "README.md",
         "test_log.csv",
-        "reports/Task4_Comprehensive_Test_Case_Documentation.pdf",
+        "reports/Task5_Comprehensive_Testing_and_Code_Level_Report.pdf",
         "video/Task4_Testing_Demonstration.mp4",
         "MANIFEST_SHA256.txt",
     ):
         assert prefix + relative in names
     assert sum(name.endswith(".osi") for name in names) >= 20
 
-print("Task 4 validation PASS")
+print("Task 5 validation PASS")
 print(f"Records: {len(rows)} ({dict(verdicts)})")
 print(f"Atomic checks: {audit['checks_total']} ({audit['pass']} pass, {audit['fail']} fail)")
 print(f"PDF: {len(reader.pages)} pages, {len(uris)} link annotations")

@@ -536,7 +536,7 @@
     "execution_status": "COMPLETED",
     "software_verdict": "FAIL",
     "evidence": "testing/task3/evidence/TC01_results.xlsx",
-    "issue_url": "https://github.com/ananditasinha3004/OsdagBridge/issues/1",
+    "issue_url": "https://github.com/Nidhikhare12/OsdagBridge/issues/267",
     "notes": ""
   },
   {
@@ -554,7 +554,7 @@
     "execution_status": "COMPLETED",
     "software_verdict": "FAIL",
     "evidence": "testing/task3/evidence/output_verification.json",
-    "issue_url": "https://github.com/ananditasinha3004/OsdagBridge/issues/2",
+    "issue_url": "https://github.com/Nidhikhare12/OsdagBridge/issues/257",
     "notes": ""
   },
   {
@@ -572,7 +572,7 @@
     "execution_status": "COMPLETED",
     "software_verdict": "FAIL",
     "evidence": "testing/task3/evidence/TC01_results.xlsx",
-    "issue_url": "https://github.com/ananditasinha3004/OsdagBridge/issues/2",
+    "issue_url": "https://github.com/Nidhikhare12/OsdagBridge/issues/257",
     "notes": ""
   },
   {

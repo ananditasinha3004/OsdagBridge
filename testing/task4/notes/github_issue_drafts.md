@@ -1,11 +1,15 @@
-# Task 3 GitHub issues
+# Task 5 GitHub issue publication record
 
-The repository Issues feature was enabled and both detailed Task 3 reports were published:
+The final duplicate audit produced one new upstream issue and one comment on a
+matching upstream issue:
 
-- https://github.com/ananditasinha3004/OsdagBridge/issues/1
-- https://github.com/ananditasinha3004/OsdagBridge/issues/2
+- https://github.com/Nidhikhare12/OsdagBridge/issues/267
+- https://github.com/Nidhikhare12/OsdagBridge/issues/257
 
-The submitted issue bodies are preserved below for the submission archive.
+The original fork drafts are preserved below for traceability, but the live
+submission links above are authoritative. Evidence-backed comments were also
+published to upstream #71, #43, #171, and #172; the #113 multi-run comment was
+already live.
 
 ## Girder Section Properties workbook labels metre-normalized values as mm
 
@@ -17,5 +21,5 @@ Root cause: `generate_results_values_builder.py::resolve_girder_section_properti
 
 A fresh 25 m / 7.5 m / 0 degree optimized design renders end diaphragms and exports section-property rows, but `end_diaphragm_design_results` contains three empty pair dictionaries and `end_diaphragm_forces_dict["pairs"]` is empty. The workbook contains transverse section definitions but no cross-bracing/end-diaphragm demand-capacity-utilization-status sheets.
 
-Root cause direction: `_design_end_diaphragm_members()` silently returns empty pair results when support-edge elements do not map to result-data girders and therefore creates no design jobs. Normalize node identifiers, assert every configured pair maps to start/end elements, and treat zero design jobs as an error. Add workbook/report result resolvers. Upstream #199 has a stale-state/OSI-load trigger; this reproduction is a fresh-process baseline.
+Confirmed root cause: `_design_end_diaphragm_members()` reads only global `Vz_i` from the skew=0 support-line members; that component is zero, so no jobs are queued. Use local-axis forces or resolve the relevant global components, assert pair mapping, and treat zero jobs as an error. Add workbook/report result resolvers. See upstream #257.
 
