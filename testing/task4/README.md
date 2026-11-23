@@ -35,6 +35,9 @@ FAIL results.
 Repository branch:
 https://github.com/ananditasinha3004/OsdagBridge/tree/codex/task4-test-case-documentation
 
+Repository access: `Nidhikhare12` was verified as a direct collaborator in
+GitHub repository settings on 23 November 2026 (IST).
+
 Video:
 https://github.com/ananditasinha3004/OsdagBridge/blob/codex/task4-test-case-documentation/testing/task4/video/Task4_Testing_Demonstration.mp4
 

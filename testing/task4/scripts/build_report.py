@@ -463,6 +463,7 @@ story += [
     report_table([
         ["Deliverable", "Location / link", "Verification"],
         ["GitHub repository", link(REPO, REPO), "Public branch includes Tasks 1-4"],
+        ["Collaborator access", "Nidhikhare12", "Verified as a direct repository collaborator on 23 Nov 2026 IST"],
         ["PDF report", "testing/task4/reports/Task4_Comprehensive_Test_Case_Documentation.pdf", "Rendered to PNG; page count/text/link checks"],
         ["ZIP package", "testing/task4/dist/OsdagBridge_Task4_Submission.zip", "Manifest and archive test included"],
         ["Master log", "testing/task4/test_log.csv and test_log.json", "36 unique records; required fields non-empty"],
