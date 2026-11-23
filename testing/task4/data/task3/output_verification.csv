@@ -1,0 +1,60 @@
+check_id,layer,field,expected,actual,status,note
+T3-DICT-R1-geometry.span,UI/Input/Output,geometry.span,25,"{'input': '25', 'output': 25}",PASS,
+T3-DICT-R1-geometry.skew_angle,UI/Input/Output,geometry.skew_angle,0,"{'input': '0', 'output': 0}",PASS,
+T3-DICT-R1-geometry.carriageway_width,UI/Input/Output,geometry.carriageway_width,7.5,"{'input': '7.5', 'output': 7.5}",PASS,
+T3-DICT-R1-material.girder,UI/Input/Output,material.girder,custom_steel_360_510,"{'input': 'custom_steel_360_510', 'output': 'custom_steel_360_510'}",PASS,
+T3-MAT-R1-material.girder.fy,Input/Output,material.girder.fy,360,360,PASS,
+T3-MAT-R1-material.girder.fu,Input/Output,material.girder.fu,510,510,PASS,
+T3-MAT-R1-material.girder.e,Input/Output,material.girder.e,205,205,PASS,
+T3-DICT-R2-geometry.span,UI/Input/Output,geometry.span,30,"{'input': '30', 'output': 30}",PASS,
+T3-DICT-R2-geometry.skew_angle,UI/Input/Output,geometry.skew_angle,5,"{'input': '5', 'output': 5}",PASS,
+T3-DICT-R2-geometry.carriageway_width,UI/Input/Output,geometry.carriageway_width,7.5,"{'input': '7.5', 'output': 7.5}",PASS,
+T3-DICT-R2-material.girder,UI/Input/Output,material.girder,custom_steel_360_510,"{'input': 'custom_steel_360_510', 'output': 'custom_steel_360_510'}",PASS,
+T3-MAT-R2-material.girder.fy,Input/Output,material.girder.fy,360,360,PASS,
+T3-MAT-R2-material.girder.fu,Input/Output,material.girder.fu,510,510,PASS,
+T3-MAT-R2-material.girder.e,Input/Output,material.girder.e,205,205,PASS,
+T3-DICT-R3-geometry.span,UI/Input/Output,geometry.span,35,"{'input': '35', 'output': 35}",PASS,
+T3-DICT-R3-geometry.skew_angle,UI/Input/Output,geometry.skew_angle,-5,"{'input': '-5', 'output': -5}",PASS,
+T3-DICT-R3-geometry.carriageway_width,UI/Input/Output,geometry.carriageway_width,7.5,"{'input': '7.5', 'output': 7.5}",PASS,
+T3-DICT-R3-material.girder,UI/Input/Output,material.girder,custom_steel_360_510,"{'input': 'custom_steel_360_510', 'output': 'custom_steel_360_510'}",PASS,
+T3-MAT-R3-material.girder.fy,Input/Output,material.girder.fy,360,360,PASS,
+T3-MAT-R3-material.girder.fu,Input/Output,material.girder.fu,510,510,PASS,
+T3-MAT-R3-material.girder.e,Input/Output,material.girder.e,205,205,PASS,
+T3-XLS-BRIDGE-overall_width_m,Input/Workbook,overall_width_m,8.4,8.4,PASS,
+T3-XLS-BRIDGE-span_m,Input/Workbook,span_m,25,25,PASS,
+T3-XLS-BRIDGE-structural_girders,Input/Workbook,structural_girders,4,4,PASS,
+T3-XLS-BRIDGE-girder_spacing_m,Input/Workbook,girder_spacing_m,2.1,2.1,PASS,
+T3-XLS-BRIDGE-deck_overhang_m,Input/Workbook,deck_overhang_m,1.05,1.05,PASS,
+T3-XLS-BRIDGE-skew_deg,Input/Workbook,skew_deg,0,0,PASS,
+T3-XLS-STEEL-girder,Output/Workbook,Girder,"['E 350A', 490.0, 350.0, 200000.0]","['E 350A', 490, 350, 200000]",PASS,
+T3-XLS-STEEL-cross_bracing,Output/Workbook,Cross Bracing,"['E 350A', 490.0, 350.0, 200000.0]","['E 350A', 490, 350, 200000]",PASS,
+T3-XLS-STEEL-end_diaphragm,Output/Workbook,End Diaphragm,"['E 350A', 490.0, 350.0, 200000.0]","['E 350A', 490, 350, 200000]",PASS,
+T3-XLS-DECK-ECM,Output/Workbook,Deck Ecm labelled MPa,33.0,33,FAIL,Workbook exports the GPa magnitude 33 under an MPa header; expected 33000 MPa.
+T3-XLS-DECK-MODULAR,Output/Workbook,Deck modular ratio Es/Ecm,6.06,6060.61,FAIL,Reported 6060.61 results from dividing 200000 MPa by 33 GPa without conversion.
+T3-XLS-GIRDER-UNITS-G1,Output/Workbook,G1M1 dimensions labelled mm,"[1390.0, 420.0, 18.0, 420.0, 18.0, 8.0]","[1.39, 0.42, 0.02, 0.42, 0.02, 0.01]",FAIL,Workbook consumes metre-normalized per-girder values after Design without converting them back to mm.
+T3-XLS-GIRDER-UNITS-G2,Output/Workbook,G2M1 dimensions labelled mm,"[1390.0, 420.0, 18.0, 420.0, 18.0, 8.0]","[1.39, 0.42, 0.02, 0.42, 0.02, 0.01]",FAIL,Workbook consumes metre-normalized per-girder values after Design without converting them back to mm.
+T3-XLS-GIRDER-UNITS-G3,Output/Workbook,G3M1 dimensions labelled mm,"[1390.0, 420.0, 18.0, 420.0, 18.0, 8.0]","[1.39, 0.42, 0.02, 0.42, 0.02, 0.01]",FAIL,Workbook consumes metre-normalized per-girder values after Design without converting them back to mm.
+T3-XLS-GIRDER-UNITS-G4,Output/Workbook,G4M1 dimensions labelled mm,"[1390.0, 420.0, 18.0, 420.0, 18.0, 8.0]","[1.39, 0.42, 0.02, 0.42, 0.02, 0.01]",FAIL,Workbook consumes metre-normalized per-girder values after Design without converting them back to mm.
+T3-XLS-DECK-BASIC,Output/Workbook,Deck grade/thickness/overhang,"['M40', '250.0', 1.05]","['M40', '250', 1.05]",PASS,
+T3-COMP-girders,Output dictionary,girders,4,6,PASS,per-girder design records
+T3-COMP-stiffeners,Output dictionary,stiffeners,4,6,PASS,intermediate/bearing stiffener checks
+T3-COMP-cross_bracing,Output dictionary,cross_bracing,3,3,PASS,adjacent girder-pair result groups
+T3-COMP-end_diaphragm,Output dictionary,end_diaphragm,3,0,FAIL,non-empty adjacent-pair design results
+T3-COMP-shear_connectors,Output dictionary,shear_connectors,4,6,PASS,per-girder stud checks
+T3-COMP-deck,Output dictionary,deck,55,55,PASS,deck design keys
+T3-COMP-deck_report,Output dictionary,deck_report,56,56,PASS,deck report keys
+T3-GIRDER-COUNT,Input/CAD/Output,structural girder count,4,6,FAIL,CAD and workbook show four structural girders; design_results reports six deck longitudinal lines as girders.
+T3-XLS-COVER-girder,Workbook,girder,"['Flexural Resistance Check', 'Girder Section Properties', 'Shear Resistance Check']",all present,PASS,
+T3-XLS-COVER-cross_bracing,Workbook,cross_bracing,['Cross Bracing Section Propertie'],all present,PASS,
+T3-XLS-COVER-end_diaphragm,Workbook,end_diaphragm,['End Diaphragm Section Propertie'],all present,PASS,
+T3-XLS-COVER-shear_connectors,Workbook,shear_connectors,"['Shear Connector Capacity', 'Shear Connector Details']",all present,PASS,
+T3-XLS-COVER-deck,Workbook,deck,"['Crack Width Check', 'Deck Slab Properties']",all present,PASS,
+T3-XLS-TRANSVERSE-DESIGN,Workbook,cross-bracing/end-diaphragm design checks,member capacities/utilization/status,"['Cross Bracing Section Propertie', 'End Diaphragm Section Propertie']",FAIL,Only section-property sheets are exported; no transverse-member design-check sheets are present.
+T3-GRAPH-R1-cad,Graphical output,cad,non-empty PNG,"{'bytes': 22519, 'sha256': '4b9df5855a212a080735e8d5070e3cfe13eb2d5aa922f950c6eabe948ef76c1d'}",PASS,
+T3-GRAPH-R1-plot,Graphical output,plot,non-empty PNG,"{'bytes': 13511, 'sha256': '159520b9023b6bbe49984b45eb8d9bc8011e9d5c457367b447b9a092cd324114'}",PASS,
+T3-GRAPH-R2-cad,Graphical output,cad,non-empty PNG,"{'bytes': 22252, 'sha256': '34655031d7336b593f5782e3d48ad32ca16e20dbc7fc1d607e53af31b02b35ad'}",PASS,
+T3-GRAPH-R2-plot,Graphical output,plot,non-empty PNG,"{'bytes': 14935, 'sha256': '83bf0914997d5246efb0a13ea29a229c94e13a2ecbd0dcd3b3b5699017b6992c'}",PASS,
+T3-GRAPH-R3-cad,Graphical output,cad,non-empty PNG,"{'bytes': 22148, 'sha256': '1cfbe72d101cec997e8dcaee8468b5e04c3fe2885746619c4542c3129d82a90d'}",PASS,
+T3-GRAPH-R3-plot,Graphical output,plot,non-empty PNG,"{'bytes': 15938, 'sha256': '533c7efc5ca6110d3ffcbb1b9968cebf5f6c42e9c18b0f377c6c32786955877c'}",PASS,
+T3-GRAPH-DISTINCT-cad,Graphical output,distinct cad across runs,3,3,PASS,
+T3-GRAPH-DISTINCT-plot,Graphical output,distinct plot across runs,3,3,PASS,
